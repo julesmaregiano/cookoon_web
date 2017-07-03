@@ -5,3 +5,13 @@
   background-position: center;
   height: 100vh;
 }
+
+.wrapper {
+  min-height: 100vh;
+  &-blue {
+    background: $blue;
+  }
+  &-cream {
+    background: $cream;
+  }
+}

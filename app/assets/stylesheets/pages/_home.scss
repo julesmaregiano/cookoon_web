@@ -2,3 +2,23 @@
  * CSS code specific to home page
  * (margin/padding adjustments)
  * ------------------------------------- */
+.home-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 30px;
+  height: 100%;
+}
+
+.home-title {
+  flex: 2;
+  padding: 50px 0;
+}
+
+.home-description {
+  flex: 8;
+}
+
+.home-links {
+  flex: 2;
+}

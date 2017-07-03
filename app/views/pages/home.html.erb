@@ -1,2 +1,20 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="home-wrapper text-center">
+  <div class="home-container">
+    <div class="home-title title-block">
+      <h1>COOKOON</h1>
+      <h3>RECEVONS PARTOUT !</h3>
+    </div>
+    <div class="home-description">
+      <p>
+        <strong>
+          Cookoon vous permet de louer un espace privé à un autre membre de la
+          communauté pour quelques heures, en quelques clics.
+        </strong>
+      </p>
+    </div>
+    <div class="home-links links-block">
+      <%= link_to 'EN SAVOIR +', '#', class: 'no-button' %>
+      <%= link_to 'ACCÈS MEMBRE', '#', class: 'button button-blue' %>
+    </div>
+  </div>
+</div>

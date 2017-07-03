@@ -83,3 +83,9 @@ production:
   database: cookoon_web_production
   username: cookoon_web
   password: <%= ENV['COOKOON_WEB_DATABASE_PASSWORD'] %>
+
+staging:
+  <<: *default
+  database: cookoon_web_staging
+  username: cookoon_web
+  password: <%= ENV['COOKOON_WEB_DATABASE_PASSWORD'] %>

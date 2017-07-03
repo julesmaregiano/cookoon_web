@@ -18,8 +18,23 @@
   background: #aeaeae;
 }
 .bg-blue {
-  background: #00a3e1;
+  background: #006F8B;
 }
 .bg-dark-blue {
   background: #3b5998;
+}
+a {
+  color: black;
+  text-decoration: none;
+  &:hover {
+    color: black;
+    text-decoration: none;
+  }
+  &:visited {
+    text-decoration: none;
+  }
+  &:focus {
+    color: black;
+    text-decoration: none;
+  }
 }

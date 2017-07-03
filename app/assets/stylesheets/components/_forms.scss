@@ -1,0 +1,15 @@
+.form-group input, .form-group textarea {
+  border: none;
+  border-bottom: 2px solid black;
+  transition: border-bottom 0.2s ease;
+  border-radius: 0;
+  background: $cream;
+  box-shadow: none;
+}
+
+
+.form-group input:focus, .form-group textarea:focus {
+  outline: none;
+  border-bottom: 3px solid black;
+  box-shadow: none;
+}

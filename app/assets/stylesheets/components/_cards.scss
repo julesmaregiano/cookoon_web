@@ -1,0 +1,16 @@
+.card {
+  background: url('http://lorempixel.com/400/200/city/');
+  background-size: cover;
+  height: 250px;
+  position: relative;
+  &-data {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 25px;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    display: flex;
+    justify-content: space-between;
+  }
+}

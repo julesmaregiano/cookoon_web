@@ -37,8 +37,8 @@ gem 'simple_form'
 gem 'jquery-rails'
 
 gem 'figaro'
-
 gem 'devise'
+gem 'money-rails', '~>1'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

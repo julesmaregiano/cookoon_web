@@ -33,6 +33,8 @@ ActiveRecord::Schema.define(version: 20170704144545) do
     t.bigint "user_id"
     t.datetime "date"
     t.integer "duration"
+    t.integer "price_cents"
+    t.string "price_currency", default: "EUR", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["cookoon_id"], name: "index_reservations_on_cookoon_id"

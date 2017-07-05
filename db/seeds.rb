@@ -18,3 +18,5 @@ cookoons_attributes = [
 puts "Seeding Cookoons"
 cookoons_attributes.each { |attributes| Cookoon.create! attributes }
 puts "Cookoons done"
+
+Reservation.create!(duration: 2, date: DateTime.now, user: User.last, cookoon: Cookoon.first, price_cents: 45000)

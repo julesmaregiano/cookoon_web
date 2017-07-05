@@ -1,0 +1,21 @@
+<div class="image-wrapper">
+</div>
+
+<div class="container">
+  <h3>Choisissez votre mode de paiement</h3>
+
+
+  <p>Prix de la location : <%= humanized_money_with_symbol @price_without_fee %></p>
+  <p>Frais d'utilisation Cookoon : <%= humanized_money_with_symbol @cookoon_fee %></p>
+  <hr>
+  <p>TOTAL : <%= humanized_money_with_symbol @reservation.price %></p>
+
+  <div class="text-center" style='margin-top: 25px;'>
+    <%= simple_form_for [@cookoon, @reservation] do |f| %>
+      <%= f.input :duration, as: :hidden, value: @reservation.duration %>
+      <%= f.input :date, as: :hidden, value: @reservation.date %>
+      <%= f.input :price, as: :hidden, value: @reservation.price %>
+      <%= f.submit 'Réservez', class: 'button button-blue' %>
+    <% end %>
+  </div>
+</div>

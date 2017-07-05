@@ -26,9 +26,8 @@ class ReservationsController < ApplicationController
   end
 
   def build_prices
-    @price_without_fee = Money.new(@reservation.duration * @cookoon.price)
-    @cookoon_fee = Money.new(@price_without_fee * Reservation.cookoon_fee)
-    @reservation.price = Money.new(@price_without_fee + @cookoon_fee)
+    @price_without_fee = @reservation.price_without_fee
+    @cookoon_fee = @reservation.cookoon_fee
   end
 
   def reservation_params

@@ -6,6 +6,8 @@ class Reservation < ApplicationRecord
 
   validates :price_cents, presence: true
 
+  enum status: [ :pending, :accepted, :refused, :paid, :cancelled ]
+
   def price
     Money.new(price_without_fee + cookoon_fee)
   end

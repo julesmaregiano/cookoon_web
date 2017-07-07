@@ -1,0 +1,43 @@
+.side-nav {
+  background: $blue;
+  height: 100vh;
+  width: 66%;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  display: none;
+  &-container {
+    padding: 10px;
+    color: white;
+  }
+  &-userblock {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 20px 20px 35px 20px;
+    max-width: 280px;
+  }
+  ul {
+    list-style: none;
+  }
+  li {
+    padding: 10px 0;
+    border-bottom: 1px solid white;
+  }
+  a {
+    color: white;
+    &:focus {
+      color: white;
+    }
+  }
+  p {
+    margin: 0;
+  }
+}
+
+@media (min-width: 768px) {
+  .side-nav {
+    width: 25%;
+  }
+}

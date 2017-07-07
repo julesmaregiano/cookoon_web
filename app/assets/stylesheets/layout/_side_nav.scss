@@ -7,8 +7,17 @@
   top: 0;
   left: 0;
   display: none;
-  padding: 10px;
-  color: white;
+  &-container {
+    padding: 10px;
+    color: white;
+  }
+  &-userblock {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 20px 20px 35px 20px;
+    max-width: 280px;
+  }
   ul {
     list-style: none;
   }
@@ -21,6 +30,9 @@
     &:focus {
       color: white;
     }
+  }
+  p {
+    margin: 0;
   }
 }
 

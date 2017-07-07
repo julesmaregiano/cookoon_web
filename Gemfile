@@ -41,6 +41,8 @@ gem 'figaro'
 gem 'devise'
 gem 'money-rails', '~>1'
 
+gem 'cloudinary'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

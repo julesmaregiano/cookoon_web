@@ -37,6 +37,10 @@ gem 'simple_form'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 
+gem 'cloudinary'
+gem 'attachinary'
+gem 'jquery-fileupload-rails'
+
 gem 'figaro'
 gem 'devise'
 gem 'money-rails', '~>1'

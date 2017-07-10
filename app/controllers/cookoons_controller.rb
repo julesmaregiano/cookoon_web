@@ -24,6 +24,6 @@ class CookoonsController < ApplicationController
   private
 
   def cookoon_params
-    params.require(:cookoon).permit(:name, :surface, :price, :address, :capacity)
+    params.require(:cookoon).permit(:name, :surface, :price, :address, :capacity, photos: [])
   end
 end

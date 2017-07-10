@@ -7,6 +7,8 @@ class User < ApplicationRecord
   has_many :cookoons
   has_many :reservations
 
+  has_attachment :photo
+
   def full_name
     "#{first_name.capitalize} #{last_name.capitalize}"
   end

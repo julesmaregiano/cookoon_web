@@ -43,7 +43,7 @@
           {
             "lat": <%= @cookoon.latitude %>,
             "lng": <%= @cookoon.longitude %>,
-            "infowindow": "<h1><%= @cookoon.name %></h1>"
+            "infowindow": "<h3><%= @cookoon.name %></h3>"
           }
         ]);
         handler.bounds.extendWith(markers);

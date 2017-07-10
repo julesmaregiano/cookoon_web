@@ -5,7 +5,11 @@
     </div>
     <% if current_user %>
       <div class="side-nav-userblock">
-        <%= image_tag 'http://via.placeholder.com/50x50', class: 'avatar-large' %>
+        <% if current_user.photo? %>
+	        <%= cl_image_tag(current_user.photo.path, { size: '50x50', crop: :thumb, gravity: :face, class: 'avatar-large' }) %>
+        <% else %>
+          <%= image_tag 'http://via.placeholder.com/50x50', class: 'avatar-large' %>
+        <% end %>
         <%= link_to current_user.full_name, edit_user_registration_path %>
       </div>
     <% end %>

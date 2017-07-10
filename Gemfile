@@ -41,6 +41,7 @@ gem 'cloudinary'
 gem 'attachinary'
 gem 'jquery-fileupload-rails'
 gem "geocoder"
+gem "gmaps4rails"
 
 gem 'figaro'
 gem 'devise'
@@ -64,6 +65,10 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'rubocop', '~> 0.49.1', require: false
+end
+
+source 'https://rails-assets.org' do
+  gem "rails-assets-underscore"
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

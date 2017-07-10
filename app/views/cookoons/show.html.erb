@@ -24,3 +24,32 @@
     <%= link_to 'Réserver', new_cookoon_reservation_path(@cookoon, reservation: {duration: 2, date: DateTime.now}), class: 'button button-blue' %>
   </div>
 </div>
+
+<div id="map" style="width: 100%; height: 400px; margin-top: 50px;"></div>
+
+<% content_for(:after_js) do %>
+  <script>
+    $(document).ready(function() {
+      var handler = Gmaps.build('Google');
+      handler.buildMap({
+        provider: {
+          scrollwheel: false
+        },
+        internal: {
+          id: 'map'
+        }
+      }, function() {
+        markers = handler.addMarkers([
+          {
+            "lat": <%= @cookoon.latitude %>,
+            "lng": <%= @cookoon.longitude %>,
+            "infowindow": "<h1><%= @cookoon.name %></h1>"
+          }
+        ]);
+        handler.bounds.extendWith(markers);
+        handler.fitMapToBounds();
+        handler.getMap().setZoom(14);
+      });
+    });
+  </script>
+<% end %>

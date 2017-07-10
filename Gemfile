@@ -40,6 +40,7 @@ gem 'jquery-ui-rails'
 gem 'cloudinary'
 gem 'attachinary'
 gem 'jquery-fileupload-rails'
+gem "geocoder"
 
 gem 'figaro'
 gem 'devise'

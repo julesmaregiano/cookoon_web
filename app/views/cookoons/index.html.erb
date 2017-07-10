@@ -4,7 +4,7 @@
     <% @cookoons.each do |cookoon| %>
       <div class="col-xs-12 col-md-4">
         <%= link_to cookoon do %>
-          <div class="card">
+          <div class="card" style="background-image: url(<%= cookoon_safe_picture(cookoon) %>)">
             <div class="card-data">
               <div class="card-infos">
                 <%= "#{readable_price(cookoon)} - #{cookoon.name}" %>

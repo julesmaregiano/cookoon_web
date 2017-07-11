@@ -9,5 +9,5 @@ class Cookoon < ApplicationRecord
   geocoded_by :address
   after_validation :geocode, if: :address_changed?
 
-  TYPES = %w(Appartement Maison Jardin Loft Terrasse Toit Villa)
+  CATEGORIES = %w(Appartement Maison Jardin Loft Terrasse Toit Villa)
 end

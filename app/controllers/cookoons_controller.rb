@@ -1,6 +1,10 @@
 class CookoonsController < ApplicationController
   def index
     @cookoons = Cookoon.all
+    @hash = Gmaps4rails.build_markers(@cookoons) do |cookoon, marker|
+      marker.lat cookoon.latitude
+      marker.lng cookoon.longitude
+    end
   end
 
   def new
@@ -24,6 +28,6 @@ class CookoonsController < ApplicationController
   private
 
   def cookoon_params
-    params.require(:cookoon).permit(:name, :surface, :price, :address, :capacity, photos: [])
+    params.require(:cookoon).permit(:name, :surface, :price, :address, :capacity, :type, photos: [])
   end
 end

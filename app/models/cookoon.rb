@@ -5,7 +5,9 @@ class Cookoon < ApplicationRecord
   has_attachments :photos, maximum: 5
 
   monetize :price_cents
-  
+
   geocoded_by :address
   after_validation :geocode, if: :address_changed?
+
+  TYPES = %w(Appartement Maison Jardin Loft Terrasse Toit Villa)
 end

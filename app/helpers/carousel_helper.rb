@@ -46,7 +46,7 @@ module CarouselHelper
         class: (is_active ? 'item active' : 'item'),
       }
 
-      content_tag(:div, cl_image_tag(image.path, :width => :auto, :crop => :scale,), options)
+      content_tag(:div, cl_image_tag(image.path, :height => 400, width: :auto, :crop => :mpad, :background=>"black"), options)
     end
 
     def controls

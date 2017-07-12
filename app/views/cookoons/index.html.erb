@@ -9,13 +9,12 @@
             <%= link_to cookoon do %>
               <div class="card" style="background-image: url(<%= cookoon_safe_picture(cookoon) %>)">
                 <div class="card-data">
-                  <div class="card-infos">
-                    <%= "#{readable_price(cookoon)} - #{cookoon.name}" %>
+                  <div class="card-text">
+                    <%= cookoon.name %>
                   </div>
-                  <div class="card-rating">
-                    <% 5.times do %>
-                      <i class="fa fa-star" aria-hidden="true"></i>
-                    <% end %>
+                  <div class="card-infos">
+                    <%= category_display_for(cookoon) %>
+                    <%= price_display_for(cookoon) %>
                   </div>
                 </div>
               </div>

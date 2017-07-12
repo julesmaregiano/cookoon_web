@@ -2,14 +2,22 @@
   background-size: cover;
   height: 250px;
   position: relative;
+  margin-bottom: 10px;
   &-data {
     position: absolute;
     bottom: 0;
     width: 100%;
-    padding: 25px;
-    background: rgba(0, 0, 0, 0.5);
+    padding: 8px;
+    background: $blue;
     color: white;
     display: flex;
     justify-content: space-between;
+  }
+  &-infos {
+    display: flex;
+    justify-content: space-around;
+    position: absolute;
+    right: 10px;
+    top: -10px;
   }
 }

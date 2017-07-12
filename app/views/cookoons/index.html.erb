@@ -9,13 +9,16 @@
             <%= link_to cookoon do %>
               <div class="card" style="background-image: url(<%= cookoon_safe_picture(cookoon) %>)">
                 <div class="card-data">
-                  <div class="card-infos">
-                    <%= "#{readable_price(cookoon)} - #{cookoon.name}" %>
+                  <div class="card-text">
+                    <%= cookoon.name %>
                   </div>
-                  <div class="card-rating">
-                    <% 5.times do %>
-                      <i class="fa fa-star" aria-hidden="true"></i>
-                    <% end %>
+                  <div class="card-infos">
+                    <div class="hexagon">
+                      <i class="fa fa-home" aria-hidden="true"></i>
+                    </div>
+                    <div class="hexagon left-mar-10">
+                      €€€
+                    </div>
                   </div>
                 </div>
               </div>

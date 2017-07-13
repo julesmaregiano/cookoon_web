@@ -22,11 +22,8 @@
     justify-content: space-between;
     padding: 10px;
   }
-  &-container {
-    padding: 10px;
-    p {
-      margin: 0;
-    }
+  p {
+    margin: 0;
   }
   &-body {
     padding-top: 40px;
@@ -42,14 +39,14 @@
     max-width: 90%;
   }
 }
-.search-body input {
+.search-body input, .search-body select {
   border: none;
   border-bottom: 2px solid white;
   background: #006F8B;
   color: white;
 }
 
-.search-body input:focus {
+.search-body input:focus, .search-body select:focus {
   border: none;
   border-bottom: 2px solid white;
 }
@@ -62,3 +59,26 @@
     font-size: 40px;
   }
 }
+
+.bootstrap-datetimepicker-widget {
+  background: $blue;
+  width: 95%;
+}
+
+.bootstrap-datetimepicker-widget table td span {
+  color: white;
+}
+
+.bootstrap-datetimepicker-widget table td span:hover {
+  background: lighten($blue, 30%);
+}
+
+.bootstrap-datetimepicker-widget table td.old, .bootstrap-datetimepicker-widget table td.new {
+  color: #ccc;
+}
+
+.form-control::-webkit-input-placeholder { color: white; }  /* WebKit, Blink, Edge */
+.form-control:-moz-placeholder { color: white; }  /* Mozilla Firefox 4 to 18 */
+.form-control::-moz-placeholder { color: white; }  /* Mozilla Firefox 19+ */
+.form-control:-ms-input-placeholder { color: white; }  /* Internet Explorer 10-11 */
+.form-control::-ms-input-placeholder { color: white; }  /* Microsoft Edge */

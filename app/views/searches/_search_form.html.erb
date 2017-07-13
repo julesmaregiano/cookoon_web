@@ -1,0 +1,19 @@
+<div class="search">
+  <div class="search-container">
+    <div class="search-header">
+      <div>Autour de vous</div>
+      <div>Tout de suite</div>
+      <div>Pour 4</div>
+    </div>
+    <div class="search-body">
+      <%= simple_form_for(:search) do |f| %>
+        <%= f.input :address, label: false, placeholder: 'Ou ?' %>
+        <%= f.input :datetime, label: false, placeholder: 'Quand ?' %>
+        <%= f.input :number, label: false, placeholder: 'Pour combien de personnes ?' %>
+        <div class="text-center">
+          <%= f.submit :rechercher, class: 'button button-white' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

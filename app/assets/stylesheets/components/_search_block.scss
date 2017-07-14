@@ -45,6 +45,23 @@
   }
 }
 
+.increment-block {
+  display: flex;
+  justify-content: space-between;
+  background: #006F8B;
+  align-items: center;
+  color: white;
+  font-size: 23px;
+}
+
+.bump {
+  animation: bump 200ms;
+}
+
+@keyframes bump {
+  30% { transform: scale(1.2); }
+}
+
 .bootstrap-datetimepicker-widget {
   background: $blue;
   width: 95%;

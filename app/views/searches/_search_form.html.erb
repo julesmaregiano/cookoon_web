@@ -13,10 +13,18 @@
               <%= f.input :address, label: false, placeholder: 'Ou ?' %>
             </div>
             <div class="col-xs-12 col-md-6">
-              <%= f.input :datetime, label: false, placeholder: 'Quand ?', input_html: { id: "search-date" } %>
+              <%= f.input :datetime, label: false, placeholder: 'Quand ?', input_html: { id: "search-date" }  %>
             </div>
             <div class="col-xs-12 col-md-6">
               <%= f.input :number, label: false, placeholder: 'Pour combien de personnes ?', collection: (1..30) %>
+            </div>
+            <div class="col-xs-12">
+              <div class="increment-block">
+                <i class="fa fa-minus-circle control" aria-hidden="true" id="min"></i>
+                <div id="hours"><span id="value">1</span> Heure(s)</div>
+                <i class="fa fa-plus-circle control" aria-hidden="true" id="max"></i>
+              </div>
+              <%= f.input :duration, input_html: {data: {min: 1, max: 5}}, as: :hidden %>
             </div>
           </div>
           <div class="text-center">

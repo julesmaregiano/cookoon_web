@@ -1,10 +1,10 @@
 class CookoonsController < ApplicationController
   def index
-    @new_search = UserSearch.new(number: 1, duration: 1)
-    @last_search = current_user.user_searches.last || @new_search
+    @new_search = UserSearch.new(number: 2, duration: 1)
+    @last_search = current_search || @new_search
     @cookoons = Cookoon.near(@last_search.address || 'Paris' , 10)
-    @search_infos = prepare_infos
-    @hash = build_markers
+    prepare_infos
+    build_markers
   end
 
   def new
@@ -32,7 +32,7 @@ class CookoonsController < ApplicationController
   end
 
   def prepare_infos
-    {
+    @search_infos = {
       position: @last_search.address || 'Autour de vous',
       time_slot: @last_search.datetime.try(:strftime, '%a %d - %H:%M') || 'Tout de suite',
       people_number: @last_search.number || 4
@@ -40,7 +40,7 @@ class CookoonsController < ApplicationController
   end
 
   def build_markers
-    Gmaps4rails.build_markers(@cookoons) do |cookoon, marker|
+    @hash = Gmaps4rails.build_markers(@cookoons) do |cookoon, marker|
       marker.lat cookoon.latitude
       marker.lng cookoon.longitude
     end

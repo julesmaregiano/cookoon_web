@@ -12,19 +12,26 @@
             <div class="col-xs-12">
               <%= f.input :address, label: false, placeholder: 'Ou ?' %>
             </div>
-            <div class="col-xs-12 col-md-6">
+            <div class="col-xs-12">
               <%= f.input :datetime, label: false, placeholder: 'Quand ?', input_html: { id: "search-date" }  %>
             </div>
             <div class="col-xs-12 col-md-6">
-              <%= f.input :number, label: false, placeholder: 'Pour combien de personnes ?', collection: (1..30) %>
-            </div>
-            <div class="col-xs-12">
-              <div class="increment-block">
-                <i class="fa fa-minus-circle control" aria-hidden="true" id="min"></i>
-                <div id="hours"><span id="value">1</span> Heure(s)</div>
-                <i class="fa fa-plus-circle control" aria-hidden="true" id="max"></i>
+              <!-- Nombre de participants -->
+              <div class="increment-block" data-input="#search_number" data-field="#number">
+                <i class="fa fa-minus-circle control" aria-hidden="true" data-action="minus"></i>
+                <div id="participants"><span id="number">1</span> Personne(s)</div>
+                <i class="fa fa-plus-circle control" aria-hidden="true" data-action="plus"></i>
               </div>
-              <%= f.input :duration, input_html: {data: {min: 1, max: 5}}, as: :hidden %>
+              <%= f.input :number, input_html: {value: 1, data: {min: 1, max: 20}}, as: :hidden %>
+            </div>
+            <div class="col-xs-12 col-md-6">
+              <!-- Nombre d'heures -->
+              <div class="increment-block" data-input="#search_duration" data-field="#duration">
+                <i class="fa fa-minus-circle control" aria-hidden="true" data-action="minus"></i>
+                <div id="hours"><span id="duration">1</span> Heure(s)</div>
+                <i class="fa fa-plus-circle control" aria-hidden="true" data-action="plus"></i>
+              </div>
+              <%= f.input :duration, input_html: {value: 1, data: {min: 1, max: 5}}, as: :hidden %>
             </div>
           </div>
           <div class="text-center">

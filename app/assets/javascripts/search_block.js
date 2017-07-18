@@ -1,40 +1,43 @@
+// Show / Hide search
 $('.search-body').hide();
 $('.search-header').click(function() {
   $('.search-body').slideToggle();
 });
 
-var value = parseInt($('#value').text(), 10);
-var max = $('#search_duration').data("max");
-var min = $('#search_duration').data("min");
-
 $('.control').click(function() {
   var clickedElem = $(this);
   bumpElement(clickedElem);
   modifyValue(clickedElem);
-  setValue();
 })
 
+function modifyValue(clickedElem) {
+  var $input = $(clickedElem.parent().data('input'));
+  var $field = $(clickedElem.parent().data('field'));
+  var action = clickedElem.data('action');
+  var min = $input.data("min");
+  var max = $input.data("max");
+  var value = parseInt($field.text(), 10);
+
+  if ( action === "minus") {
+    if ($input.val() > min) {
+      value -= 1
+      $field.text(value);
+      $input.val(value);
+    }
+  }
+  else if (action === "plus") {
+    if ($input.val() < max) {
+      value += 1
+      $field.text(value);
+      $input.val(value);
+    }
+  }
+}
+
+// Make buttons bump
 function bumpElement(clickedElem) {
   clickedElem.addClass("bump");
   setTimeout(function() {
     clickedElem.removeClass("bump");
   }, 400);
-}
-
-function setValue() {
-  $('#value').text(value);
-  $('#search_duration').val(value);
-}
-
-function modifyValue(clickedElem) {
-  if (clickedElem.attr("id") === "min") {
-    if ($('#search_duration').val() > min) {
-      value -= 1
-    }
-  }
-  else if (clickedElem.attr("id") === "max") {
-    if ($('#search_duration').val() < max) {
-      value += 1
-    }
-  }
 }

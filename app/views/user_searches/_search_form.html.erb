@@ -13,7 +13,7 @@
               <%= f.input :address, label: false, placeholder: 'Ou ?', input_html: { value: @last_search.address } %>
             </div>
             <div class="col-xs-12">
-              <%= f.input :date, label: false, placeholder: 'Quand ?', input_html: { id: "search-date", value: @last_search.date }, as: :string  %>
+              <%= f.input :date, label: false, placeholder: 'Quand ?', input_html: { value: @last_search.date }, as: :string  %>
             </div>
             <div class="col-xs-12 col-md-6">
               <!-- Nombre d'heures -->
@@ -46,7 +46,7 @@
 <%= content_for(:after_js) do %>
   <script>
     $(function () {
-      $('#search-date').datetimepicker({
+      $('#user_search_date').datetimepicker({
         showTodayButton: true,
         showClose: true,
         locale: 'fr'

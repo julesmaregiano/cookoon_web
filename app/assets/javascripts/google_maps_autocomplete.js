@@ -13,7 +13,6 @@ $(document).ready(function() {
 });
 
 function onPlaceChanged() {
-  console.log(this)
   var place = this.getPlace();
   var components = getAddressComponents(place);
   $('#user_search_address').trigger('blur').val(components.full_address);

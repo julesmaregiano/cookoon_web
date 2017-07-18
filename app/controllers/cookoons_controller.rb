@@ -1,6 +1,13 @@
 class CookoonsController < ApplicationController
   def index
     @cookoons = Cookoon.all
+    @new_search = UserSearch.new(number: 1, duration: 1)
+    @last_search = current_user.user_searches.last || @new_search
+    @search_infos = {
+      position: @last_search.address || 'Autour de vous',
+      time_slot: @last_search.datetime.strftime('%a %d - %H:%M') || 'Tout de suite',
+      people_number: @last_search.number || 4
+    }
     @hash = Gmaps4rails.build_markers(@cookoons) do |cookoon, marker|
       marker.lat cookoon.latitude
       marker.lng cookoon.longitude

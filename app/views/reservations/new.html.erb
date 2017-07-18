@@ -2,20 +2,44 @@
 </div>
 
 <div class="container">
-  <h3>Choisissez votre mode de paiement</h3>
+  <h3>Détails de votre réservation</h3>
 
+  <div class="recap">
+    <p>Reservation pour le : <%= @reservation.date.strftime('%d %B %Y') %></p>
+    <p>Pour une durée de <%= @reservation.duration %> heure(s)</p>
+  </div>
 
   <p>Prix de la location : <%= humanized_money_with_symbol @price_without_fee %></p>
   <p>Frais d'utilisation Cookoon : <%= humanized_money_with_symbol @cookoon_fee %></p>
   <hr>
   <p>TOTAL : <%= humanized_money_with_symbol @reservation.price %></p>
-
-  <div class="text-center" style='margin-top: 25px;'>
-    <%= simple_form_for [@cookoon, @reservation] do |f| %>
-      <%= f.input :duration, as: :hidden, value: @reservation.duration %>
-      <%= f.input :date, as: :hidden, value: @reservation.date %>
-      <%= f.input :price, as: :hidden, value: @reservation.price %>
-      <%= f.submit 'Réservez', class: 'button button-blue' %>
-    <% end %>
+</div>
+<div class="search">
+  <div class="container">
+    <div class="row">
+      <div class="text-center" style='margin-top: 25px;'>
+        <%= simple_form_for [@cookoon, @reservation] do |f| %>
+          <div class="col-xs-12">
+            <%= f.input :duration, value: @reservation.duration, label: 'Durée', as: :hidden %>
+          </div>
+          <div class="col-xs-12">
+            <%= f.input :date, value: @reservation.date, as: :string, as: :hidden %>
+          </div>
+          <%= f.input :price, as: :hidden, value: @reservation.price %>
+          <%= f.submit 'Confirmer', class: 'button button-blue' %>
+        <% end %>
+      </div>
+    </div>
   </div>
 </div>
+<%= content_for(:after_js) do %>
+  <script>
+    $(function () {
+      $('#reservation_date').datetimepicker({
+        showTodayButton: true,
+        showClose: true,
+        locale: 'fr'
+      });
+    });
+  </script>
+<% end %>

@@ -14,4 +14,9 @@ class ApplicationController < ActionController::Base
     # For additional in app/views/devise/registrations/edit.html.erb
     devise_parameter_sanitizer.permit(:account_update, keys: [:first_name, :last_name, :phone_number, :description, :photo])
   end
+
+  def current_search
+    return unless current_user
+    @current_search ||= current_user.user_searches.last
+  end
 end

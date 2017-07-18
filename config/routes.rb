@@ -13,4 +13,5 @@ Rails.application.routes.draw do
   resources :cookoons do
     resources :reservations, only: [:new, :create]
   end
+  resources :user_searches, only: :create
 end

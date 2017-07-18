@@ -64,7 +64,7 @@ ActiveRecord::Schema.define(version: 20170718091250) do
   create_table "user_searches", force: :cascade do |t|
     t.bigint "user_id"
     t.string "address"
-    t.datetime "datetime"
+    t.datetime "date"
     t.integer "number"
     t.integer "duration"
     t.datetime "created_at", null: false

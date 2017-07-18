@@ -21,7 +21,7 @@
     </p>
   </div>
   <div class="text-center" style='margin-top: 25px;'>
-    <%= link_to 'Réserver', new_cookoon_reservation_path(@cookoon, reservation: {duration: 2, date: DateTime.now}), class: 'button button-blue' %>
+    <%= link_to 'Réserver', new_cookoon_reservation_path(@cookoon, reservation: @fill_reservation), class: 'button button-blue' %>
   </div>
 </div>
 

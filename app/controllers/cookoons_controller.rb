@@ -23,6 +23,10 @@ class CookoonsController < ApplicationController
 
   def show
     @cookoon = Cookoon.find(params[:id])
+    @fill_reservation = {
+      duration: current_search.try(:duration) || 2,
+      date: current_search.try(:date) || DateTime.now + 2.days
+    }
   end
 
   private
@@ -34,7 +38,7 @@ class CookoonsController < ApplicationController
   def prepare_infos
     @search_infos = {
       position: @last_search.address || 'Autour de vous',
-      time_slot: @last_search.datetime.try(:strftime, '%a %d - %H:%M') || 'Tout de suite',
+      time_slot: @last_search.date.try(:strftime, '%a %d - %H:%M') || 'Tout de suite',
       people_number: @last_search.number || 4
     }
   end

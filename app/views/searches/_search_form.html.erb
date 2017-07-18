@@ -7,7 +7,7 @@
     </div>
     <div class="search-body">
       <div class="container">
-        <%= simple_form_for(:search) do |f| %>
+        <%= simple_form_for(:search, url: cookoons_path, method: :get) do |f| %>
           <div class="row">
             <div class="col-xs-12">
               <%= f.input :address, label: false, placeholder: 'Ou ?' %>
@@ -48,6 +48,7 @@
     $(function () {
       $('#search-date').datetimepicker({
         showTodayButton: true,
+        showClose: true,
         locale: 'fr'
       });
     });

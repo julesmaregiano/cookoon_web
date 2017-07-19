@@ -1,0 +1,11 @@
+.container
+  p Vos réservations
+  - @reservations.each do |reservation|
+    = link_to reservation do
+      .flex-container
+        .reservation-image
+          = cl_image_tag reservation.cookoon.photos.first.path, width: 150, height: 100, crop: "fit"
+        .reservation-infos
+          p 
+            span.reservation-title = "#{reservation.cookoon.name} - #{reservation.cookoon.address}"
+          p = "#{reservation.date.strftime('%d %B %Y')} - #{reservation.duration} H"

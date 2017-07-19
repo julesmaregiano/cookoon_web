@@ -22,3 +22,17 @@
     margin: 0;
   }
 }
+
+.reservation {
+  &-image {
+    flex: 1;
+  }
+  &-infos {
+    padding: 0 15px;
+    flex: 3;
+  }
+  &-title {
+    color: green;
+    font-weight: bold;
+  }
+}

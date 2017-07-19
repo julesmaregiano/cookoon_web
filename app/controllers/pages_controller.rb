@@ -4,8 +4,4 @@ class PagesController < ApplicationController
 
   def home
   end
-
-  # To remove when more content added
-  def member
-  end
 end

@@ -2,7 +2,7 @@
   p Vos réservations
   - @reservations.each do |reservation|
     = link_to reservation do
-      .flex-container.text-center
+      .flex-container
         .reservation-image
           = cl_image_tag reservation.cookoon.photos.first.path, width: 150, height: 100, crop: "fit"
         .reservation-infos

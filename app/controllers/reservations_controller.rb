@@ -1,5 +1,9 @@
 class ReservationsController < ApplicationController
-  before_action :find_cookoon, :build_reservation
+  before_action :find_cookoon, :build_reservation, only: [:new, :create]
+
+  def index
+    @reservations = current_user.reservations
+  end
 
   def new
   end

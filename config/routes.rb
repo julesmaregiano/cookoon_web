@@ -15,4 +15,8 @@ Rails.application.routes.draw do
   end
   resources :reservations, only: [:index, :show]
   resources :user_searches, only: :create
+
+  namespace :host do
+    resources :reservations, only: [:index, :show]
+  end
 end

@@ -24,6 +24,7 @@
 }
 
 .reservation {
+  margin-bottom: 10px;
   &-image {
     flex: 1;
   }
@@ -35,4 +36,8 @@
     color: green;
     font-weight: bold;
   }
+}
+
+.bottom-block {
+  padding: 20px;
 }

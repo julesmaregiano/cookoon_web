@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
   has_many :cookoons
   has_many :reservations
+  has_many :reservations_requests, through: :cookoons, source: :reservations
   has_many :user_searches
 
   has_attachment :photo

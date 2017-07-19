@@ -1,1 +1,30 @@
-| TODO
+.container
+  p Vos dernières demandes de réservation
+  - @reservations.each do |reservation|
+    = link_to reservation do
+      .flex-container.reservation
+        .reservation-image
+          = safe_picture_tag_for_reservations_index(reservation.cookoon)
+        .reservation-infos
+          p 
+            span.reservation-title = "#{reservation.user.full_name}"
+          p = "#{reservation.date.strftime('%d %B %Y')} - #{reservation.duration} H"
+  hr
+  p Vos Cookoons
+  
+  .row
+    - @cookoons.each do |cookoon|
+      .col-xs-12.col-md-6
+        .card style="background-image: url(#{cookoon_safe_picture(cookoon)})"
+            .card-data
+              .card-text
+                = cookoon.name
+              .card-infos
+                = category_display_for(cookoon)
+                = price_display_for(cookoon)
+
+  .padded
+                
+.fixed-bottom
+  .bottom-block
+    = link_to "Ajouter un espace", new_cookoon_path, class: 'button button-blue'

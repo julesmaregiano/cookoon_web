@@ -38,7 +38,6 @@ gem 'jquery-rails'
 gem 'jquery-ui-rails'
 
 gem 'momentjs-rails', '>= 2.9.0'
-gem 'bootstrap3-datetimepicker-rails', '~> 4.17.47'
 
 gem 'slim'
 
@@ -72,6 +71,7 @@ end
 
 source 'https://rails-assets.org' do
   gem "rails-assets-underscore"
+  gem 'rails-assets-smalot-bootstrap-datetimepicker'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

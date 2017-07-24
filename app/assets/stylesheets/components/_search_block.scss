@@ -46,22 +46,14 @@
   30% { transform: scale(1.2); }
 }
 
-.bootstrap-datetimepicker-widget {
+.datetimepicker {
   background: $blue;
-  width: 95%;
-}
-
-.bootstrap-datetimepicker-widget table td span {
   color: white;
+  table tr td span.active.active {
+    background: #3F88C5;
+  }
 }
 
-.bootstrap-datetimepicker-widget table td span:hover {
-  background: lighten($blue, 30%);
-}
-
-.bootstrap-datetimepicker-widget table td.old, .bootstrap-datetimepicker-widget table td.new {
-  color: #ccc;
-}
 
 .search .form-control::-webkit-input-placeholder { color: white; }  /* WebKit, Blink, Edge */
 .search .form-control:-moz-placeholder { color: white; }  /* Mozilla Firefox 4 to 18 */

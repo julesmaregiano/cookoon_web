@@ -47,9 +47,11 @@
   <script>
     $(function () {
       $('#user_search_date').datetimepicker({
-        showTodayButton: true,
-        showClose: true,
-        locale: 'fr'
+        autoclose: true,
+        weekStart: 1,
+        minuteStep: 30,
+        format: 'd MM h:ii',
+        startDate: new Date()
       });
     });
   </script>

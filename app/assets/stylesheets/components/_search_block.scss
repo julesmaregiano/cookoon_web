@@ -54,6 +54,10 @@
   }
 }
 
+.form-control[readonly] {
+  background: $blue;
+}
+
 
 .search .form-control::-webkit-input-placeholder { color: white; }  /* WebKit, Blink, Edge */
 .search .form-control:-moz-placeholder { color: white; }  /* Mozilla Firefox 4 to 18 */

@@ -2,7 +2,7 @@ class CookoonsController < ApplicationController
   def index
     @new_search = UserSearch.new(number: 2, duration: 2, date: DateTime.now + 2.days)
     @last_search = current_search || @new_search
-    @cookoons = Cookoon.near(current_search.try(:address) || request.location.city, 10)
+    @cookoons = Cookoon.near(@new_search.address || 'Paris', 10)
     prepare_infos
     build_markers
   end
@@ -38,7 +38,7 @@ class CookoonsController < ApplicationController
   def prepare_infos
     @search_infos = {
       position: @last_search.address.try(:split, " - ").try(:first) || 'Autour de vous',
-      time_slot: @last_search.date.try(:strftime, '%a %d - %H:%M') || 'Tout de suite',
+      time_slot: @last_search.date.try(:strftime, '%e %B %k:%M') || 'Tout de suite',
       people_number: @last_search.number || 4
     }
   end

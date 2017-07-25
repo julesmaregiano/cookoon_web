@@ -23,6 +23,11 @@ class CookoonsController < ApplicationController
 
   def show
     @cookoon = Cookoon.find(params[:id])
+    @reservation = current_user.reservations.build(
+      cookoon: @cookoon,
+      date: current_search.try(:date) || DateTime.now + 2.days,
+      duration: current_search.try(:duration) || 2,
+    )
     @fill_reservation = {
       duration: current_search.try(:duration) || 2,
       date: current_search.try(:date) || DateTime.now + 2.days

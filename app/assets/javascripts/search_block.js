@@ -4,6 +4,18 @@ $('.search-header').click(function() {
   $('.search-body').slideToggle();
 });
 
+// Fill header on change
+$(function() {
+  $('#user_search_date').change(function() {
+    $('#infos-time-slot').text($(this).val());
+  });
+
+  $('#user_search_number').change(function() {
+    $('#infos-number').text($(this).val());
+  });
+});
+
+// Listen click on control
 $('.control').click(function() {
   var clickedElem = $(this);
   bumpElement(clickedElem);
@@ -32,6 +44,7 @@ function modifyValue(clickedElem) {
       $input.val(value);
     }
   }
+  $input.trigger("change");
 }
 
 // Make buttons bump

@@ -1,5 +1,5 @@
 class ReservationsController < ApplicationController
-  before_action :find_cookoon, :build_reservation, only: [:new, :create]
+  before_action :find_cookoon, :build_reservation, only: [:create]
 
   def index
     @reservations = current_user.reservations
@@ -9,16 +9,14 @@ class ReservationsController < ApplicationController
     @reservation = Reservation.find(params[:id])
   end
 
-  def new
-  end
-
   def create
+    @reservation.price = @reservation.duration * @cookoon.price
     if @reservation.save
       flash[:notice] = 'Votre réservation a bien été prise en compte'
       redirect_to cookoons_path
     else
       flash[:alert] = 'Erreur'
-      render :new
+      redirect_to @cookoon
     end
   end
 
@@ -30,15 +28,9 @@ class ReservationsController < ApplicationController
 
   def build_reservation
     @reservation = current_user.reservations.build(reservation_params)
-    build_prices
-  end
-
-  def build_prices
-    @price_without_fee = @reservation.price_without_fee
-    @cookoon_fee = @reservation.cookoon_fee
   end
 
   def reservation_params
-    params.require(:reservation).permit(:duration, :date, :price).merge(cookoon: @cookoon)
+    params.require(:reservation).permit(:duration, :date).merge(cookoon: @cookoon)
   end
 end

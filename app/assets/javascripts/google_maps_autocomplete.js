@@ -48,10 +48,34 @@ function getAddressComponents(place) {
   }
 
   return {
-    address: street_number == null ? route : (street_number + ' ' + route),
-    full_address: street_number == null ? route + ' - ' + city : (street_number + ' ' + route + ' - ' + city),
+    address: buildAddress(street_number, route, city),
+    full_address: buildFullAddress(street_number, route, city),
     zip_code: zip_code,
     city: city,
     country_code: country_code
   };
+}
+
+function buildAddress(street_number, route, city) {
+  if (street_number !== null && route !== null) {
+    return street_number + ' ' + route
+  }
+  else if (route !== null) {
+    return route
+  }
+  else {
+    return city
+  }
+}
+
+function buildFullAddress(street_number, route, city) {
+  if (street_number !== null && route !== null) {
+    return street_number + ' ' + route + ' ' + city
+  }
+  else if (route !== null) {
+    return route + ' ' + city
+  }
+  else {
+    return city
+  }
 }

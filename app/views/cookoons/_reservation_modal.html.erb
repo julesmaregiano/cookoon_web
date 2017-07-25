@@ -1,0 +1,55 @@
+<div class="modal fade" id="recap-modal" tabindex="-1" role="dialog" aria-labelledby="recapModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="recapModalLabel">Votre réservation</h4>
+      </div>
+      <div class="modal-body">
+        <div class="recap">
+          <div class="text-center">
+            <span class="recap-price">
+              <%= humanized_money_with_symbol @cookoon.price %> par heure
+            </span>
+          </div>
+          <%= simple_form_for [@cookoon, @reservation] do |f| %>
+          <div class="recap-datetime">
+            <p>Vous arrivez le:</p>
+            <%= f.input :date, as: :string, label: false, input_html: { value: @reservation.date.strftime('%e %B à %k:%M') } %>
+          </div>
+          <div class="recap-duration">
+            <p>Pour une durée de :</p>
+            <div class="increment-block" data-input="#reservation_duration" data-field="#duration">
+              <i class="fa fa-minus-circle control" aria-hidden="true" data-action="minus"></i>
+              <div id="hours"><span id="duration"><%= @reservation.duration %></span> Heure(s)</div>
+              <i class="fa fa-plus-circle control" aria-hidden="true" data-action="plus"></i>
+            </div>
+            <%= f.input :duration, input_html: {value: @reservation.duration, data: {min: 1, max: 5}}, as: :hidden %>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <p>Total : <span id='total-price'><%= @reservation.duration * @cookoon.price %></span> €</p>
+        <%= f.submit 'Réserver', class: "button button-white" %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<%= content_for :after_js do %>
+  <script>
+    $("#reservation_date").datetimepicker({
+      autoclose: true,
+      weekStart: 1,
+      minuteStep: 30,
+      format: 'd MM à h:ii',
+      startDate: new Date()
+    });
+  </script>
+  <script>
+    $('#reservation_duration').change(function() {
+      $('#total-price').text(<%= @cookoon.price %> * $(this).val())
+    });
+  </script>
+<% end %>

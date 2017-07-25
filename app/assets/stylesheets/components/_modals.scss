@@ -1,0 +1,13 @@
+.modal {
+  &-content {
+    background: $blue;
+    color: white;
+  }
+  &-body {
+    padding: 50px;
+  }
+}
+
+.close {
+  color: white;
+}

@@ -13,6 +13,7 @@ class ReservationsController < ApplicationController
     @reservation.price = @reservation.duration * @cookoon.price
     if @reservation.save
       flash[:notice] = 'Votre réservation a bien été prise en compte'
+      #TODO: Go to payment
       redirect_to cookoons_path
     else
       flash[:alert] = 'Erreur'

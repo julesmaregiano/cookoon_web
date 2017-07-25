@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   root 'pages#home'
 
   resources :cookoons do
-    resources :reservations, only: [:new, :create]
+    resources :reservations, only: [:create]
   end
   resources :reservations, only: [:index, :show]
   resources :user_searches, only: :create

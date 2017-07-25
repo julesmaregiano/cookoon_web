@@ -1,0 +1,21 @@
+.recap {
+  &-price {
+    border: 1px solid white;
+    border-radius: 50px;
+    padding: 15px 30px;
+  }
+  &-datetime {
+    margin-top: 40px;
+  }
+}
+
+.recap input, .recap select {
+  border-bottom: 2px solid white;
+  background: #006F8B;
+  color: white;
+}
+
+.recap input:focus, .recap select:focus {
+  border: none;
+  border-bottom: 2px solid white;
+}

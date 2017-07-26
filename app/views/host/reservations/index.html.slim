@@ -1,7 +1,7 @@
 .container
   p Vos dernières demandes de réservation
   - @reservations.each do |reservation|
-    = link_to reservation do
+    = link_to edit_host_reservation_path(reservation) do
       .flex-container.reservation
         .reservation-image
           = safe_picture_tag_for_reservations_index(reservation.cookoon)

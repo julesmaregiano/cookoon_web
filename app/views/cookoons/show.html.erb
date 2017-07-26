@@ -3,7 +3,7 @@
 <div class="container">
   <div class="block-presentation">
     <h3><%= @cookoon.name %></h3>
-    <p>Appartement à <span class="text-gray">Paris, 75008</span></p>
+    <p>Appartement à <span class="text-gray"><%= @cookoon.address %></span></p>
     <p>par <span class="text-gray"><%= @cookoon.user.first_name %></span></p>
   </div>
   <div>

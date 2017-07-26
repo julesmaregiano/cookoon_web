@@ -3,4 +3,8 @@ class Host::ReservationsController < ApplicationController
     @reservations = current_user.reservations_requests
     @cookoons = current_user.cookoons
   end
+
+  def edit
+    @reservation = Reservation.find(params[:id])
+  end
 end

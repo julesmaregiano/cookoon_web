@@ -4,23 +4,30 @@
     <div class="flex-container">
       <div>
         <p>
-          <span>Ajouter une aide ménagère - 15 euros ?</span>
+          Ajouter une aide ménagère - <span id="cleaning-price">15</span> € ?
+        </p>
+        <p>
           L’aide ménagère passera dans votre Cookoon après la location selon l’heure qui vous convient.
         </p>
       </div>
-      <%= f.input :cleaning %>
+      <%= f.input :cleaning, label: false, input_html: { class: 'reservation-option', data: {price: 15} } %>
     </div>
     <div class="flex-container">
       <div>
         <p>
-          <span>Ajouter un concierge - 15 euros ?</span>
+          Ajouter un concierge - <span id="janitor-price">15</span> € ?
+        </p>
+        <p>
           Le concierge récupère vos clés, assure le check-in et le check-out puis vous rend vos clés.
         </p>
       </div>
-      <%= f.input :janitor %>      
+      <%= f.input :janitor, label: false, input_html: { class: 'reservation-option', data: {price: 15} } %>
     </div>
     <hr>
-    <p>Vous recevrez :<span>TODO</span> €</p>
+    <!-- TODO: NEED REFACTO HERE ! -->
+    <% full_price = @reservation.duration * @reservation.cookoon.price %>
+    <% cookoon_fee = full_price * @reservation.cookoon_fee_rate %>
+    <p>Vous recevrez : <span id="display-price"><%= full_price - cookoon_fee %></span> €</p>
 
     <div class="flex-container">
       <%= f.submit 'Accepter', name: "accept" %>

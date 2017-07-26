@@ -9,5 +9,6 @@ class Host::ReservationsController < ApplicationController
   end
 
   def update
+    byebug
   end
 end

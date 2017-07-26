@@ -1,2 +1,15 @@
 .container
   = render 'user_infos', reservation: @reservation
+  = simple_form_for @reservation do |f|
+    .flex-container
+      div
+        p 
+          span Ajouter une aide ménagère - 15 euros ?
+          p L’aide ménagère passera dans votre Cookoon après la location selon l’heure qui vous convient.
+      = f.input :cleaning
+    .flex-container
+      div
+        p 
+          span Ajouter un concierge - 15 euros ?
+          p Le concierge récupère vos clés, assure le check-in et le check-out puis vous rend vos clés.
+      = f.input :janitor

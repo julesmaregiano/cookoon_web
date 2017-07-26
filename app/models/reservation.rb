@@ -8,8 +8,6 @@ class Reservation < ApplicationRecord
 
   enum status: [ :pending, :accepted, :refused, :paid, :cancelled ]
 
-  private
-
   def cookoon_fee_rate
     0.07
   end

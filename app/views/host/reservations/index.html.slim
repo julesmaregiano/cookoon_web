@@ -1,14 +1,8 @@
 .container
   p Vos dernières demandes de réservation
   - @reservations.each do |reservation|
-    = link_to reservation do
-      .flex-container.reservation
-        .reservation-image
-          = safe_picture_tag_for_reservations_index(reservation.cookoon)
-        .reservation-infos
-          p 
-            span.reservation-title = "#{reservation.user.full_name}"
-          p = "#{reservation.date.strftime('%d %B %Y')} - #{reservation.duration} H"
+    = link_to edit_host_reservation_path(reservation) do
+      = render 'user_infos', reservation: reservation
   hr
   p Vos Cookoons
   
@@ -23,7 +17,7 @@
                 = category_display_for(cookoon)
                 = price_display_for(cookoon)
 
-  .padded
+  .light-padded
                 
 .fixed-bottom
   .bottom-block

@@ -1,0 +1,49 @@
+<div class="container">
+  <div class="reservation-card">
+    <%= render 'user_infos', reservation: @reservation %>
+    <%= simple_form_for [:host, @reservation] do |f| %>
+      <div class="flex-container">
+        <div class='service-presentation'>
+          <p>
+            Ajouter une aide ménagère - <span id="cleaning-price">15</span> € ?
+          </p>
+          <p class="service-description">
+            L’aide ménagère passera dans votre Cookoon après la location selon l’heure qui vous convient.
+          </p>
+        </div>
+        <div class="service-input">
+          <%= f.input :cleaning, label: false, input_html: { class: 'reservation-option', data: {price: 15} } %>
+        </div>  
+      </div>
+      <div class="flex-container">
+        <div class='service-presentation'>
+          <p>
+            Ajouter un concierge - <span id="janitor-price">15</span> € ?
+          </p>
+          <p class="service-description">
+            Le concierge récupère vos clés, assure le check-in et le check-out puis vous rend vos clés.
+          </p>
+        </div>
+        <div class="service-input">
+          <%= f.input :janitor, label: false, input_html: { class: 'reservation-option', data: {price: 15} } %>
+        </div>
+      </div>
+      <hr>
+      <!-- TODO: NEED REFACTO HERE ! -->
+      <% full_price = @reservation.duration * @reservation.cookoon.price %>
+      <% cookoon_fee = full_price * @reservation.cookoon_fee_rate %>
+      <div class="text-right">
+        <p>Vous recevrez : <span id="display-price"><%= full_price - cookoon_fee %></span> €</p>
+      </div>
+
+      <div class="flex-container">
+        <%= f.submit 'Accepter', name: "accept", class: 'button button-white' %>
+        <%= f.submit 'Refuser', name: "refuse", class: 'button button-white' %>
+      </div>
+      <div class="flex-container light-padded">
+        <p><%= @reservation.user.full_name %></p>
+        <p>92% de recommendations</p>
+      </div>
+    <% end %>
+  </div>
+</div>

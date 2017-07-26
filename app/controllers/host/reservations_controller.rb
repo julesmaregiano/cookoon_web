@@ -7,4 +7,7 @@ class Host::ReservationsController < ApplicationController
   def edit
     @reservation = Reservation.find(params[:id])
   end
+
+  def update
+  end
 end

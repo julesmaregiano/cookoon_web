@@ -1,0 +1,34 @@
+<div class="container">
+  <%= render 'user_infos', reservation: @reservation %>
+  <%= simple_form_for [:host, @reservation] do |f| %>
+    <div class="flex-container">
+      <div>
+        <p>
+          <span>Ajouter une aide ménagère - 15 euros ?</span>
+          L’aide ménagère passera dans votre Cookoon après la location selon l’heure qui vous convient.
+        </p>
+      </div>
+      <%= f.input :cleaning %>
+    </div>
+    <div class="flex-container">
+      <div>
+        <p>
+          <span>Ajouter un concierge - 15 euros ?</span>
+          Le concierge récupère vos clés, assure le check-in et le check-out puis vous rend vos clés.
+        </p>
+      </div>
+      <%= f.input :janitor %>      
+    </div>
+    <hr>
+    <p>Vous recevrez :<span>TODO</span> €</p>
+
+    <div class="flex-container">
+      <%= f.submit 'Accepter', name: "accept" %>
+      <%= f.submit 'Refuser', name: "refuse" %>
+    </div>
+    <div class="flex-container">
+      <%= @reservation.user.full_name %>
+      <p>92% de recommendations</p>
+    </div>
+  <% end %>
+</div>

@@ -21,3 +21,19 @@
     top: -10px;
   }
 }
+
+.reservation-card {
+  background: $blue;
+  padding: 15px;
+  color: white;
+  border-radius: 10px;
+  .reservation-title {
+    color: $cream;
+  }
+  p.service-description {
+    font-size: 12px;
+  }
+  .service-input {
+    margin-left: 30px;
+  }
+}

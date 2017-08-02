@@ -17,6 +17,9 @@ Rails.application.routes.draw do
   resources :user_searches, only: :create
 
   namespace :host do
-    resources :reservations, only: [:index, :edit, :update]
+    resources :reservations, only: [:index, :edit, :update] do
+      resources :inventories, only: [:new, :create]
+    end
+    resources :inventories, only: [:edit, :update]
   end
 end

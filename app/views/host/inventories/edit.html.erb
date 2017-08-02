@@ -1,0 +1,14 @@
+<div class="container">
+  <p>Avant de terminer la location vous devez :</p>
+  <ul>
+    <li>Récupérer les clés.</li>
+    <li>Faire l'état des lieux.</li>
+  </ul>
+  <p>En cas de conflit vous pouvez ajouter des photos : </p>
+  <%= simple_form_for [:host, @inventory] do |f| %>
+    <%= f.input :checkout_photos, as: :attachinary %>
+    <div class="fixed-bottom light-padded">
+      <%= f.button :button, 'TERMINER LA LOCATION', type: :submit, class: 'button button-blue' %>
+    </div>
+  <% end %>
+</div>

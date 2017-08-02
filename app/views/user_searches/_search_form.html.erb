@@ -18,18 +18,18 @@
             <div class="col-xs-12 col-md-6">
               <!-- Nombre d'heures -->
               <div class="increment-block" data-input="#user_search_duration" data-field="#duration">
-                <i class="fa fa-minus-square control" aria-hidden="true" data-action="minus"></i>
+                <i class="fa fa-minus-circle control" aria-hidden="true" data-action="minus"></i>
                 <div id="hours"><span id="duration"><%= @last_search.duration %></span> Heure(s)</div>
-                <i class="fa fa-plus-square control" aria-hidden="true" data-action="plus"></i>
+                <i class="fa fa-plus-circle control" aria-hidden="true" data-action="plus"></i>
               </div>
               <%= f.input :duration, input_html: {value: @last_search.duration, data: {min: 1, max: 5}}, as: :hidden %>
             </div>
             <div class="col-xs-12 col-md-6">
               <!-- Nombre de participants -->
               <div class="increment-block" data-input="#user_search_number" data-field="#number">
-                <i class="fa fa-minus-square control" aria-hidden="true" data-action="minus"></i>
+                <i class="fa fa-minus-circle control" aria-hidden="true" data-action="minus"></i>
                 <div id="participants"><span id="number"><%= @last_search.number %></span> Personne(s)</div>
-                <i class="fa fa-plus-square control" aria-hidden="true" data-action="plus"></i>
+                <i class="fa fa-plus-circle control" aria-hidden="true" data-action="plus"></i>
               </div>
               <%= f.input :number, input_html: {value: @last_search.number, data: {min: 1, max: 20}}, as: :hidden %>
             </div>

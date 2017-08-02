@@ -12,4 +12,8 @@ class Reservation < ApplicationRecord
   def cookoon_fee_rate
     0.07
   end
+
+  def pending_or_paid?
+    pending? || paid?
+  end
 end

@@ -1,8 +1,14 @@
 .container
   p Vos dernières demandes de réservation
   - @reservations.each do |reservation|
-    = link_to edit_host_reservation_path(reservation) do
-      = render 'user_infos', reservation: reservation
+      = link_to edit_host_reservation_path(reservation) do
+        = render 'user_infos', reservation: reservation
+      -  if reservation.accepted? && !reservation.inventory
+        .thin-padded
+          = link_to 'Débuter la location', new_host_reservation_inventory_path(reservation), class: 'button button-blue'
+      -  if reservation.ongoing? && reservation.inventory
+        .thin-padded
+          = link_to 'Terminer la location', edit_host_inventory_path(reservation.inventory), class: 'button button-blue'
   hr
   p Vos Cookoons
   

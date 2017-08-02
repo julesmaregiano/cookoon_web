@@ -18,7 +18,8 @@ Rails.application.routes.draw do
 
   namespace :host do
     resources :reservations, only: [:index, :edit, :update] do
-      resources :inventories, only: [:new, :create, :edit, :update]
+      resources :inventories, only: [:new, :create]
     end
+    resources :inventories, only: [:edit, :update]
   end
 end

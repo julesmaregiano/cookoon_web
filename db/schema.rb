@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170726092101) do
+ActiveRecord::Schema.define(version: 20170802122738) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,6 +45,14 @@ ActiveRecord::Schema.define(version: 20170726092101) do
     t.float "longitude"
     t.string "category"
     t.index ["user_id"], name: "index_cookoons_on_user_id"
+  end
+
+  create_table "inventories", force: :cascade do |t|
+    t.bigint "reservation_id"
+    t.integer "status", default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["reservation_id"], name: "index_inventories_on_reservation_id"
   end
 
   create_table "reservations", force: :cascade do |t|
@@ -96,6 +104,7 @@ ActiveRecord::Schema.define(version: 20170726092101) do
   end
 
   add_foreign_key "cookoons", "users"
+  add_foreign_key "inventories", "reservations"
   add_foreign_key "reservations", "cookoons"
   add_foreign_key "reservations", "users"
   add_foreign_key "user_searches", "users"

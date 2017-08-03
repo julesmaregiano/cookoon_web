@@ -30,6 +30,13 @@
       background: darken(#999999, 5%);
     }
   }
+  &-fixed {
+    background: $blue;
+    box-shadow: 0 5px 5px rgba(0,0,0,0.25), 0 5px 12px rgba(0,0,0,0.22);
+    &:hover {
+      background: darken($blue, 5%);
+    }
+  }
 }
 
 .no-button {

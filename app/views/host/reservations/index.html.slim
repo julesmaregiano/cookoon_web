@@ -11,7 +11,7 @@
           = link_to 'Terminer la location', edit_host_inventory_path(reservation.inventory), class: 'button button-blue'
   hr
   p Vos Cookoons
-  
+
   .row
     - @cookoons.each do |cookoon|
       .col-xs-12.col-md-6
@@ -24,7 +24,7 @@
                 = price_display_for(cookoon)
 
   .light-padded
-                
+
 .fixed-bottom
   .bottom-block
-    = link_to "Ajouter un espace", new_cookoon_path, class: 'button button-blue'
+    = link_to "Ajouter un espace", new_cookoon_path, class: 'button button-fixed'

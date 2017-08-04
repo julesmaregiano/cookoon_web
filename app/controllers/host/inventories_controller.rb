@@ -8,7 +8,8 @@ class Host::InventoriesController < ApplicationController
   end
 
   def create
-    @inventory = @reservation.build_inventory(checkin_inventory_params)
+    full_params = checkin_inventory_params.merge(checkin_at: DateTime.now)
+    @inventory = @reservation.build_inventory(full_params)
     if @inventory.save && @reservation.ongoing!
       flash[:notice] = 'La reservation vient de démarrer'
       redirect_to host_reservations_path
@@ -22,7 +23,8 @@ class Host::InventoriesController < ApplicationController
 
   def update
     reservation = @inventory.reservation
-    if @inventory.update(checkout_inventory_params) && reservation.passed!
+    full_params = checkout_inventory_params.merge({checkout_at: DateTime.now, status: :checked_out})
+    if @inventory.update(full_params) && reservation.passed!
       flash[:noice] = "La réservation est maintenant terminée"
       redirect_to host_reservations_path
     else

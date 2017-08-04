@@ -13,7 +13,9 @@ Rails.application.routes.draw do
   resources :cookoons do
     resources :reservations, only: [:create]
   end
-  resources :reservations, only: [:index, :show]
+  resources :reservations, only: [:index, :show] do
+    resources :paiements, only: [:new, :create]
+  end
   resources :user_searches, only: :create
 
   namespace :host do

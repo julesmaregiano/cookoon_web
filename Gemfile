@@ -47,6 +47,8 @@ gem 'jquery-fileupload-rails'
 gem "geocoder"
 gem "gmaps4rails"
 
+gem 'stripe'
+
 gem 'figaro'
 gem 'devise'
 gem 'money-rails', '~>1'

@@ -14,7 +14,7 @@ class ReservationsController < ApplicationController
     if @reservation.save
       flash[:notice] = 'Votre réservation a bien été prise en compte'
       #TODO: Go to payment
-      redirect_to cookoons_path
+      redirect_to new_reservation_paiement_path(@reservation)
     else
       flash[:alert] = 'Erreur'
       redirect_to @cookoon

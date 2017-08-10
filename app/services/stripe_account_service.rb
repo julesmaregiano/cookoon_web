@@ -1,25 +1,26 @@
 class StripeAccountService
-  attr_reader :params, :user, :request_ip, :errors
+  attr_reader :params, :user, :request_ip, :errors, :account
 
   def initialize(attributes)
     @params = attributes[:params]
     @user = attributes[:user]
     @request_ip = attributes[:request_ip]
+    @account = false
     check_params
   end
 
   def retrieve_or_create_user_account
     if user.stripe_account_id.nil?
-      account = create_stripe_account
+      @account = create_stripe_account
       user.update(stripe_account_id: account.id) if account
     else
-      account = Stripe::Account.retrieve(user.stripe_account_id)
+      @account = Stripe::Account.retrieve(user.stripe_account_id)
     end
 
-    account
+    @account
   end
 
-  def enrich(account)
+  def enrich_account
     return false unless account
 
     begin
@@ -43,7 +44,16 @@ class StripeAccountService
     rescue Stripe::InvalidRequestError => e
       Rails.logger.error("Faild to enrich Stripe account")
       Rails.logger.error(e.message)
+      @errors << e.message
       false
+    end
+  end
+
+  def error_messages
+    if errors.any?
+      errors.join(", ")
+    else
+      "Une erreur est survenue avec notre partenaire de paiement veuillez retenter ultérieurement, pour des raisons de sécurité nous ne conservons pas vos données bancaires veuillez les saisir à nouveau."
     end
   end
 
@@ -54,8 +64,9 @@ class StripeAccountService
     begin
       Stripe::Account.retrieve(user.stripe_account_id)
     rescue Stripe::PermissionError => e
-      Rails.logger.error("Faild to retrieve Stripe account")
+      Rails.logger.error("Failed to retrieve Stripe account")
       Rails.logger.error(e.message)
+      @errors << e.message
       false
     end
   end
@@ -79,6 +90,7 @@ class StripeAccountService
     rescue Stripe::InvalidRequestError => e
       Rails.logger.error("Faild to create Stripe account")
       Rails.logger.error(e.message)
+      @errors << e.message
       false
     end
   end

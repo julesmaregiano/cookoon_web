@@ -1,6 +1,5 @@
-class StripeAccountWrapper
-
-  attr_reader :params, :user, :request_ip, :account, :errors
+class StripeAccountService
+  attr_reader :params, :user, :request_ip, :errors
 
   def initialize(attributes)
     @params = attributes[:params]
@@ -11,12 +10,9 @@ class StripeAccountWrapper
 
   def retrieve_or_create_user_account
     if user.stripe_account_id.nil?
-      # create stripe account via api
       account = create_stripe_account
-
       user.update(stripe_account_id: account.id) if account
     else
-      # retrieve from api
       account = Stripe::Account.retrieve(user.stripe_account_id)
     end
 
@@ -53,6 +49,17 @@ class StripeAccountWrapper
 
   private
 
+  def retrieve_stripe_account
+    return false unless user
+    begin
+      Stripe::Account.retrieve(user.stripe_account_id)
+    rescue Stripe::PermissionError => e
+      Rails.logger.error("Faild to retrieve Stripe account")
+      Rails.logger.error(e.message)
+      false
+    end
+  end
+
   def create_stripe_account
     begin
       Stripe::Account.create(
@@ -76,17 +83,9 @@ class StripeAccountWrapper
     end
   end
 
-  def retrieve_stripe_account
-    begin
-      Stripe::Account.retrieve(user.stripe_account_id)
-    rescue Stripe::PermissionError => e
-      Rails.logger.error("Faild to retrieve Stripe account")
-      Rails.logger.error(e.message)
-      false
-    end
-  end
-
   def check_params
+    return false unless params
+
     @errors = []
     address_params = [params["address"]["city"], params["address"]["street"], params["address"]["post_code"]]
     if address_params.any? { |param| !param.present? }

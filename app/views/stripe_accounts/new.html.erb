@@ -1,9 +1,11 @@
-
-
-<%= content_for :after_js do %>
-  <script>
-    $(document).ready(function() {
-      
-    });
-  </script>
+<%= simple_form_for :stripe, url: stripe_accounts_path do |f| %>
+  <p>Renseignez votre addresse principale</p>
+  <%= f.simple_fields_for :address do |a| %>
+    <%= a.input :city %>
+    <%= a.input :street %>
+    <%= a.input :post_code %>
+  <% end %>
+  <%= f.input :dob, as: :date %>
+  <%= f.input :iban %>
+  <%= f.submit "Connecter mon compte" %>
 <% end %>

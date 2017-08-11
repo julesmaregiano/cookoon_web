@@ -13,6 +13,8 @@ class ApplicationController < ActionController::Base
 
     # For additional in app/views/devise/registrations/edit.html.erb
     devise_parameter_sanitizer.permit(:account_update, keys: [:first_name, :last_name, :phone_number, :description, :photo])
+    
+    devise_parameter_sanitizer.permit(:accept_invitation, keys: [:first_name, :last_name])
   end
 
   def current_search

@@ -4,7 +4,7 @@ class StripeAccountService
   def initialize(attributes)
     @params = attributes[:params]
     @user = attributes[:user]
-    @request_ip = attributes[:request_ip]
+    @request_ip = attributes[:request_ip] || "127.0.0.1"
     @account = false
     check_params
   end
@@ -14,7 +14,7 @@ class StripeAccountService
       @account = create_stripe_account
       user.update(stripe_account_id: account.id) if account
     else
-      @account = Stripe::Account.retrieve(user.stripe_account_id)
+      @account = retrieve_stripe_account
     end
 
     @account
@@ -57,10 +57,8 @@ class StripeAccountService
     end
   end
 
-  private
-
   def retrieve_stripe_account
-    return false unless user
+    return false unless user && user.stripe_account_id
     begin
       Stripe::Account.retrieve(user.stripe_account_id)
     rescue Stripe::PermissionError => e
@@ -71,7 +69,10 @@ class StripeAccountService
     end
   end
 
+  private
+
   def create_stripe_account
+    return false unless user && request_ip
     begin
       Stripe::Account.create(
         type: 'custom',

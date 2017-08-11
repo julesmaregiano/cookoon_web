@@ -16,8 +16,7 @@ class User < ApplicationRecord
   end
 
   def stripe_account
-    return nil unless stripe_account_id
-    @stripe_account ||= Stripe::Account.retrieve(stripe_account_id)
+    @stripe_account ||= StripeAccountService.new(user: self).retrieve_stripe_account
   end
 
   def stripe_verified?

@@ -51,6 +51,8 @@ gem 'stripe'
 
 gem 'figaro'
 gem 'devise'
+gem 'devise-i18n'
+gem 'devise_invitable', '~> 1.7.0'
 gem 'money-rails', '~>1'
 
 # Use Capistrano for deployment
@@ -69,6 +71,7 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'rubocop', '~> 0.49.1', require: false
+  gem 'i18n-debug'
 end
 
 source 'https://rails-assets.org' do

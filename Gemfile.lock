@@ -75,6 +75,10 @@ GEM
       railties (>= 4.1.0, < 5.2)
       responders
       warden (~> 1.2.3)
+    devise-i18n (1.1.2)
+    devise_invitable (1.7.2)
+      actionmailer (>= 4.1.0)
+      devise (>= 4.0.0)
     domain_name (0.5.20170404)
       unf (>= 0.0.5, < 1.0.0)
     erubi (1.6.1)
@@ -96,6 +100,8 @@ GEM
     http-cookie (1.0.3)
       domain_name (~> 0.5)
     i18n (0.8.4)
+    i18n-debug (1.1.0)
+      i18n (< 1)
     jbuilder (2.7.0)
       activesupport (>= 4.2.0)
       multi_json (>= 1.2)
@@ -298,10 +304,13 @@ DEPENDENCIES
   cloudinary
   coffee-rails (~> 4.2)
   devise
+  devise-i18n
+  devise_invitable (~> 1.7.0)
   figaro
   font-awesome-sass
   geocoder
   gmaps4rails
+  i18n-debug
   jbuilder (~> 2.5)
   jquery-fileupload-rails
   jquery-rails

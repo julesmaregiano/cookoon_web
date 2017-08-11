@@ -14,4 +14,13 @@ class User < ApplicationRecord
   def full_name
     "#{first_name.capitalize} #{last_name.capitalize}"
   end
+
+  def stripe_account
+    @stripe_account ||= StripeAccountService.new(user: self).retrieve_stripe_account
+  end
+
+  def stripe_verified?
+    return false unless stripe_account
+    stripe_account.payouts_enabled
+  end
 end

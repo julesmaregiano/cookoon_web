@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   end
   root 'pages#home'
 
+  resources :stripe_accounts, only: [:new, :create]
+
   resources :cookoons do
     resources :reservations, only: [:create]
   end

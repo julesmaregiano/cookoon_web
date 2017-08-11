@@ -5,6 +5,7 @@ class PaiementsController < ApplicationController
   end
 
   def create
+    # TODO Faire en sorte que la reservation ne soit pas updater si le paiement ne passe pas
     begin
       charge = Stripe::Charge.create({
         amount: @reservation.price_cents,
@@ -17,13 +18,14 @@ class PaiementsController < ApplicationController
           account: "acct_1An5DtFJfgkKkime",
         }
       })
-    rescue Stripe::CardError => e
+    rescue Stripe::CardError, Stripe::InvalidRequestError => e
       flash[:alert] = e.message
       new_reservation_paiement_path(@reservation)
     end
 
     if @reservation.update(status: :paid)
       flash[:notice] = "L'autorisation de paiement est effectuée vous serez débité seulement si le proprietaire accepte votre reservation"
+      # TODO: Redirect sur une page de confirmation
       redirect_to reservations_path
     end
   end

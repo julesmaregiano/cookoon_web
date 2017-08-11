@@ -12,7 +12,11 @@ class User < ApplicationRecord
   has_attachment :photo
 
   def full_name
-    "#{first_name.capitalize} #{last_name.capitalize}"
+    if first_name && last_name
+      "#{first_name.capitalize} #{last_name.capitalize}"
+    else
+      "Utilisateur Cookoon"
+    end
   end
 
   def stripe_account

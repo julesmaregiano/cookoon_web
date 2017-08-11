@@ -10,12 +10,13 @@
         <% else %>
           <%= image_tag 'http://via.placeholder.com/50x50', class: 'avatar-large' %>
         <% end %>
-        <%= link_to current_user.full_name, edit_user_registration_path %>
+        <%= link_to current_user.full_name, edit_users_path %>
       </div>
     <% end %>
     <ul>
       <li><%= link_to 'MES RÉSERVATIONS', reservations_path %></li>
       <li><%= link_to 'ESPACE HOTES', host_reservations_path %></li>
+      <li><%= link_to 'PARRAINER UN AMI', new_user_invitation_path %></li>
     </ul>
     <p class='pinned-bottom'>Conditions Générales</p>
   </div>

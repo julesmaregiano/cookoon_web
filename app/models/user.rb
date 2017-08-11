@@ -1,8 +1,8 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+  devise :invitable, :database_authenticatable,:recoverable,
+         :rememberable, :trackable, :validatable
 
   has_many :cookoons
   has_many :reservations
@@ -12,7 +12,11 @@ class User < ApplicationRecord
   has_attachment :photo
 
   def full_name
-    "#{first_name.capitalize} #{last_name.capitalize}"
+    if first_name && last_name
+      "#{first_name.capitalize} #{last_name.capitalize}"
+    else
+      "Utilisateur Cookoon"
+    end
   end
 
   def stripe_account

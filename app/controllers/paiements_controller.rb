@@ -12,7 +12,7 @@ class PaiementsController < ApplicationController
         currency: @reservation.price.currency,
         source: params[:stripeToken],
         description:  "Paiement pour #{@reservation.cookoon.name}",
-        application_fee: (@reservation.price_cents * @reservation.cookoon_fee_rate).floor,
+        application_fee: (@reservation.price_cents * @reservation.host_cookoon_fee_rate).floor,
         transfer_group: "RESA##{@reservation.id}",
         destination: {
           account: "acct_1An5DtFJfgkKkime",

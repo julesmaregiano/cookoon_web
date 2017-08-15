@@ -22,6 +22,3 @@ function compute_price_for_rent(duration_input) {
   var total_price = (price_cents_without_fees * 1.05) / 100
   $('#total-price').text(total_price);
 }
-
-
-// @reservation.rent_cookoon_fee_rate

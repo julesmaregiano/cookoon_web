@@ -9,7 +9,7 @@
         <div class="recap">
           <div class="text-left">
             <span class="recap-price">
-              <%= humanized_money_with_symbol @cookoon.price %> par heure
+              <span id="cookoon-price"><%= humanized_money @cookoon.price %></span> <%= currency_symbol %> par heure
             </span>
           </div>
           <%= simple_form_for [@cookoon, @reservation] do |f| %>
@@ -29,7 +29,8 @@
         </div>
       </div>
       <div class="modal-footer">
-        <p>Total : <span id='total-price'><%= @reservation.duration * @cookoon.price %></span> €</p>
+        <p>Total : <span id='total-price'><%= humanized_money @reservation.price_for_rent_with_fees %></span> €</p>
+        <p>Cookoon applique 5% de frais supplémetaires sur le prix de la location</p>
         <%= f.submit 'Réserver', class: "button button-white" %>
       </div>
       <% end %>
@@ -45,11 +46,6 @@
       minuteStep: 30,
       format: 'd MM à h:ii',
       startDate: new Date()
-    });
-  </script>
-  <script>
-    $('#reservation_duration').change(function() {
-      $('#total-price').text(<%= @cookoon.price %> * $(this).val())
     });
   </script>
 <% end %>

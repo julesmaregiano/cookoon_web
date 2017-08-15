@@ -31,7 +31,7 @@
       <hr>
       <!-- TODO: NEED REFACTO HERE ! -->
       <% full_price = @reservation.duration * @reservation.cookoon.price %>
-      <% cookoon_fee = full_price * @reservation.cookoon_fee_rate %>
+      <% cookoon_fee = full_price * @reservation.host_cookoon_fee_rate %>
       <div class="text-right">
         <p>Vous recevrez : <span id="display-price"><%= full_price - cookoon_fee %></span> €</p>
       </div>

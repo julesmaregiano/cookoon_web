@@ -11,9 +11,13 @@
     </div>
 
     <div class="form-actions">
-      <%= f.button :submit, "Mettre à jour", class: 'button button-blue'  %>
+      <div>
+        <%= f.button :submit, "Mettre à jour", class: 'button button-blue'  %>
+      </div>
       <% unless current_user.stripe_verified? %>
-        <%= link_to "Connecter mon compte avec Stripe", new_stripe_account_path, class: 'button button-blue' %>
+        <div class="light-padded">
+          <%= link_to "Connecter mon compte avec Stripe", new_stripe_account_path, class: 'button button-blue' %>
+        </div>
       <% end %>
     </div>
   <% end %>

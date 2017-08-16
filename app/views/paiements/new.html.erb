@@ -1,8 +1,8 @@
 <div class="container">
-  <h2>Récapitulatif votre reservation</h2>
+  <h2>Payez votre réservation</h2>
 
-  <p>Votre location :</p>
-  <p>le <%= display_datetime_for(@reservation) %> pour <%= display_duration_for(@reservation) %></p>
+  <b>Votre location :</b>
+  <p>le <b><%= display_datetime_for(@reservation) %></b> pour <b><%= display_duration_for(@reservation) %></b></p>
 
   <div class="light-padded">
     <div class="flex-container">
@@ -15,19 +15,23 @@
     </div>
     <hr>
     <div class="flex-container">
-      <p>TOTAL</p>
-      <p><%= humanized_money_with_symbol @reservation.price_for_rent_with_fees %></p>
+      <b>TOTAL</b>
+      <b><%= humanized_money_with_symbol @reservation.price_for_rent_with_fees %></b>
     </div>
   </div>
 
+  <div class="text-center">
+    <button id="customButton" class="button button-blue">PAYER</button>
+  </div>
 
-  <button id="customButton" class="button button-blue">PAYER</button>
+  <div class="text-center">
+    <p style="font-size:12px; margin-top: 15px">Après cette étape, votre carte bleue sera débitée du montant indiquée. Ce dernier comprend les frais de services de la plateforme Cookoon.</p>
+  </div>
 
   <%= form_tag reservation_paiements_path(@reservation), id: 'stripe_form' do %>
     <%= hidden_field_tag :stripe_token %>
   <% end %>
 </div>
-
 
 <!-- loading modal -->
 <%= render 'shared/loading_modal' %>

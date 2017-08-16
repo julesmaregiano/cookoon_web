@@ -6,6 +6,7 @@ class StripeAccountService
     @user = attributes[:user]
     @request_ip = attributes[:request_ip] || "127.0.0.1"
     @account = false
+    @errors = []
     check_params
   end
 
@@ -99,7 +100,6 @@ class StripeAccountService
   def check_params
     return false unless params
 
-    @errors = []
     address_params = [params["address"]["city"], params["address"]["street"], params["address"]["post_code"]]
     if address_params.any? { |param| !param.present? }
       @errors << "Votre adresse est obligatoire"

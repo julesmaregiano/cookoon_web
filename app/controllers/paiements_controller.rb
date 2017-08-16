@@ -5,26 +5,18 @@ class PaiementsController < ApplicationController
   end
 
   def create
-    # TODO Faire en sorte que la reservation ne soit pas updater si le paiement ne passe pas
-    begin
-      charge = Stripe::Charge.create({
-        amount: @reservation.price_cents,
-        currency: @reservation.price.currency,
-        source: params[:stripeToken],
-        description:  "Paiement pour #{@reservation.cookoon.name}",
-        application_fee: (@reservation.price_cents * @reservation.host_cookoon_fee_rate).floor,
-        transfer_group: "RESA##{@reservation.id}",
-        destination: {
-          account: @reservation.cookoon.user.stripe_account_id,
-        }
-      })
-    rescue Stripe::CardError, Stripe::InvalidRequestError => e
-      flash[:alert] = e.message
-      return redirect_to new_reservation_paiement_path(@reservation)
+    paiement_service = StripePaiementService.new(
+      user: current_user,
+      token: params[:stripe_token],
+      reservation: @reservation
+    )
+    
+    if paiement_service.create_charge_and_update_reservation
+      redirect_to @reservation, flash: { paiement_succeed: true }
+    else
+      flash[:alert] = paiement_service.displayable_errors
+      render :new
     end
-
-    @reservation.update(status: :paid)
-    redirect_to @reservation, flash: { paiement_succeed: true }
   end
 
   private

@@ -1,21 +1,60 @@
 <div class="container">
-  <h1>Paiement de votre reservation pour <%= @reservation.cookoon.name %></h1>
-  <%= form_tag reservation_paiements_path(@reservation) do %>
-    <article>
-      <label class="amount">
-        <span>Amount: <%= humanized_money_with_symbol(@reservation.price) %></span>
-      </label>
-    </article>
+  <h2>Récapitulatif votre reservation</h2>
 
-    <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-      data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-      data-name="Cookoon.fr"
-      data-email="<%= current_user.email %>"
-      data-description="Reservation <%= @reservation.id %>"
-      data-amount="<%= @reservation.price_cents %>"
-      data-currency="<%= @reservation.price.currency %>"
-      data-locale="fr"
-    ></script>
+  <p>Votre location :</p>
+  <p>le <%= display_datetime_for(@reservation) %> pour <%= display_duration_for(@reservation) %></p>
 
+  <div class="light-padded">
+    <div class="flex-container">
+      <p>Prix de la location</p>
+      <p><%= humanized_money_with_symbol @reservation.price %></p>
+    </div>
+    <div class="flex-container">
+      <p>Frais de services</p>
+      <p><%= humanized_money_with_symbol @reservation.cookoon_fees %></p>
+    </div>
+    <hr>
+    <div class="flex-container">
+      <p>TOTAL</p>
+      <p><%= humanized_money_with_symbol @reservation.price_for_rent_with_fees %></p>
+    </div>
+  </div>
+
+
+  <button id="customButton" class="button button-blue">PAYER</button>
+
+  <%= form_tag reservation_paiements_path(@reservation), id: 'stripe_form' do %>
+    <%= hidden_field_tag :stripe_token %>
   <% end %>
 </div>
+
+<script src="https://checkout.stripe.com/checkout.js"></script>
+
+<script>
+  var handler = StripeCheckout.configure({
+    key: 'pk_test_FSVbYboTFsYGkHZKX3jMm9sQ',
+    image: 'https://stripe.com/img/documentation/checkout/marketplace.png',
+    locale: 'fr',
+    token: function(token) {
+      $("#stripe_token").val(token.id);
+      $("#stripe_form").submit();
+    }
+  });
+
+  document.getElementById('customButton').addEventListener('click', function(e) {
+    // Open Checkout with further options:
+    handler.open({
+      name: 'Cookoon.fr',
+      description: 'Paiement de votre réservation',
+      zipCode: true,
+      currency: 'eur',
+      amount: <%= @reservation.price_for_rent_with_fees.fractional %>
+    });
+    e.preventDefault();
+  });
+
+  // Close Checkout on page navigation:
+  window.addEventListener('popstate', function() {
+    handler.close();
+  });
+</script>

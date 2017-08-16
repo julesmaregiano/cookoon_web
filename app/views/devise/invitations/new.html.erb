@@ -2,7 +2,6 @@
   <h2>Parainnez un ami</h2>
   <p>(Invitations restantes : <%= current_user.invitation_limit %>)</p>
 
-
   <b>Invitez vos proches à rejoindre Cookoon : nous vous offrons des services en plus et notre reconnaissance éternelle.</b>
 
   <%= simple_form_for resource, as: resource_name, url: invitation_path(resource_name), html: { method: :post} do |f| %>
@@ -12,9 +11,9 @@
     <%= f.input :first_name, label: "Le prénom de votre invité" %>
     <%= f.input :last_name, label: "Le nom de votre invité" %>
 
-  <div class="text-center">
-  <%= f.button :submit, "Inviter", class: 'button button-blue' %>
-  </div>
+    <div class="text-center">
+      <%= f.button :submit, "Inviter", class: 'button button-blue' %>
+    </div>
 
   <% end %>
 </div>

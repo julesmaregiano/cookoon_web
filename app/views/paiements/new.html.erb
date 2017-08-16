@@ -21,7 +21,11 @@
   </div>
 
   <div class="text-center">
-  <button id="customButton" class="button button-blue">PAYER</button>
+    <button id="customButton" class="button button-blue">PAYER</button>
+  </div>
+
+  <div class="text-center">
+    <p style="font-size:12px; margin-top: 15px">Après cette étape, votre carte bleue sera débitée du montant indiquée. Ce dernier comprend les frais de services de la plateforme Cookoon.</p>
   </div>
 
   <%= form_tag reservation_paiements_path(@reservation), id: 'stripe_form' do %>
@@ -29,37 +33,8 @@
   <% end %>
 </div>
 
-<div class="text-center">
-  <p style="font-size:12px; margin-top: 15px">Après cette étape, votre carte bleue sera débitée du montant indiquée. Ce dernier comprend les frais de services de la plateforme Cookoon.</p>
-</div>
+<!-- loading modal -->
+<%= render 'shared/loading_modal' %>
 
-<script src="https://checkout.stripe.com/checkout.js"></script>
-
-<script>
-  var handler = StripeCheckout.configure({
-    key: 'pk_test_FSVbYboTFsYGkHZKX3jMm9sQ',
-    image: 'https://stripe.com/img/documentation/checkout/marketplace.png',
-    locale: 'fr',
-    token: function(token) {
-      $("#stripe_token").val(token.id);
-      $("#stripe_form").submit();
-    }
-  });
-
-  document.getElementById('customButton').addEventListener('click', function(e) {
-    // Open Checkout with further options:
-    handler.open({
-      name: 'Cookoon.fr',
-      description: 'Paiement de votre réservation',
-      zipCode: true,
-      currency: 'eur',
-      amount: <%= @reservation.price_for_rent_with_fees.fractional %>
-    });
-    e.preventDefault();
-  });
-
-  // Close Checkout on page navigation:
-  window.addEventListener('popstate', function() {
-    handler.close();
-  });
-</script>
+<!-- Stripe JS -->
+<%= render 'stripe_js' %>

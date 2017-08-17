@@ -31,6 +31,9 @@ class StripePaiementService
     end
   end
 
+  # le customer est créer avec sa carte
+  # TODO: faire en sorte que le user puisse choisir parmi ses cartes sur le #new
+  # sans avoir à saisir a nouveau.
   def create_customer
     @customer = Stripe::Customer.create(
       :description => "Customer for #{user.email}",
@@ -49,7 +52,7 @@ class StripePaiementService
       @charge = Stripe::Charge.create({
         amount: reservation.price_for_rent_with_fees.fractional,
         currency: 'eur',
-        customer: customer,
+        source: token,
         application_fee: reservation.cookoon_fees.fractional,
         description:  "Paiement pour #{reservation.cookoon.name}",
         capture: false,

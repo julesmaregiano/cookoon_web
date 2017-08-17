@@ -11,10 +11,20 @@ class Host::ReservationsController < ApplicationController
 
   def update
     status = params["accept"] ? :accepted : :refused
-    displayable_status = status == :accepted ? "accepté" : "refusé"
     merged_params = reservation_params.merge(status: status)
+
     if @reservation.update(merged_params)
-      flash[:notice] = "Vous avez #{displayable_status} la réservation"
+      if @reservation.accepted?
+        paiement_service = StripePaiementService.new(user: current_user, reservation: @reservation)
+        if paiement_service.capture_tax_and_payout
+          flash[:notice] = "Vous avez accepté la réservation"
+        else
+          flash[:alert] = paiement_service.displayable_errors
+        end
+      else
+        flash[:notice] = "Vous avez refusé la réservation"
+      end
+
       redirect_to host_reservations_path
     else
       flash[:alert] = 'Erreur'

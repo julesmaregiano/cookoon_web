@@ -87,6 +87,9 @@ class StripeAccountService
         tos_acceptance: {
           date: DateTime.now.to_i,
           ip: request_ip
+        },
+        payout_schedule: {
+          interval: "manual"
         }
       )
     rescue Stripe::InvalidRequestError => e

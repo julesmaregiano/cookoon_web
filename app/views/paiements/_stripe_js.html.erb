@@ -2,7 +2,7 @@
 
 <script>
   var handler = StripeCheckout.configure({
-    key: 'pk_test_FSVbYboTFsYGkHZKX3jMm9sQ',
+    key: '<%= ENV['STRIPE_PUBLISHABLE_KEY'] %>',
     image: 'https://stripe.com/img/documentation/checkout/marketplace.png',
     locale: 'fr',
     token: function(token) {

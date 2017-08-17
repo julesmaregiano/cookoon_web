@@ -19,6 +19,6 @@ function compute_price_for_host(input) {
 
 function compute_price_for_rent(duration_input) {
   var price_cents_without_fees = ($('#cookoon-price').text() * duration_input.val()) * 100;
-  var total_price = (price_cents_without_fees * 1.05) / 100
+  var total_price = (price_cents_without_fees * 1.07) / 100
   $('#total-price').text(total_price);
 }

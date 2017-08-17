@@ -29,11 +29,8 @@
         </div>
       </div>
       <hr>
-      <!-- TODO: NEED REFACTO HERE ! -->
-      <% full_price = @reservation.duration * @reservation.cookoon.price %>
-      <% cookoon_fee = full_price * @reservation.host_cookoon_fee_rate %>
       <div class="text-right">
-        <p>Vous recevrez : <span id="display-price"><%= full_price - cookoon_fee %></span> €</p>
+        <p>Vous recevrez : <span id="display-price"><%= @reservation.payout_price_for_host %></span> €</p>
       </div>
       <% if @reservation.pending_or_paid? %>
         <div class="flex-container">
@@ -43,8 +40,19 @@
       <% end %>
       <div class="flex-container light-padded">
         <p><%= @reservation.user.full_name %></p>
-        <p>92% de recommendations</p>
       </div>
     <% end %>
   </div>
 </div>
+
+<%= render 'shared/loading_modal' %>
+
+<%= content_for :after_js do %>
+  <script>
+    $(document).ready(function() {
+      $('.button').click(function() {
+        $('#loading_modal').modal('show');
+      })
+    })
+  </script>
+<% end %>

@@ -13,11 +13,52 @@ class StripePaiementService
     update_reservation if create_charge
   end
 
+  def capture_tax_and_payout
+    capture_charge
+    pay_cookoon
+    payout
+  end
+
   def displayable_errors
     @errors.join(" ")
   end
 
   private
+
+  def capture_charge
+    retrieve_charge
+    begin
+      charge.capture
+    rescue Stripe::InvalidRequestError => e
+      Rails.logger.error("Failed to capture Charge")
+      Rails.logger.error(e.message)
+      @errors << e.message
+      false
+    end
+  end
+
+  def pay_cookoon
+    Stripe::Charge.create(
+      #nombre d'options
+      :amount => reservation.total_fees_with_services_for_host.fractional,
+      :currency => "eur",
+      :source => user.stripe_account_id
+    )
+  end
+
+  def payout
+    begin
+      Stripe::Payout.create({
+        :amount => reservation.payout_price_for_host.fractional,
+        :currency => "eur",
+      }, {:stripe_account => user.stripe_account_id})
+    rescue Stripe::InvalidRequestError => e
+      Rails.logger.error("Failed to create Stripe Payout for #{user.stripe_account_id}")
+      Rails.logger.error(e.message)
+      @errors << e.message
+      false
+    end
+  end
 
   def update_reservation
     reservation.update(status: :paid, stripe_charge_id: @charge.id)
@@ -47,16 +88,20 @@ class StripePaiementService
     @customer = Stripe::Customer.retrieve(user.stripe_customer_id)
   end
 
+  def retrieve_charge
+    @charge = Stripe::Charge.retrieve(reservation.stripe_charge_id)
+  end
+
   def create_charge
     begin
       @charge = Stripe::Charge.create({
         amount: reservation.price_for_rent_with_fees.fractional,
         currency: 'eur',
         source: token,
-        application_fee: reservation.cookoon_fees.fractional,
         description:  "Paiement pour #{reservation.cookoon.name}",
         capture: false,
         destination: {
+          amount: reservation.price_for_rent.fractional,
           account: reservation.cookoon.user.stripe_account_id
         }
       })

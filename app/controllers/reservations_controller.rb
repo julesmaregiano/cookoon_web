@@ -10,7 +10,7 @@ class ReservationsController < ApplicationController
   end
 
   def create
-    @reservation.price = @reservation.duration * @cookoon.price
+    @reservation.price = @reservation.price_for_rent
     if @reservation.save
       flash[:notice] = 'Votre réservation a bien été prise en compte'
       #TODO: Go to payment

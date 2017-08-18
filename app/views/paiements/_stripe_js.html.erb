@@ -7,7 +7,7 @@
     locale: 'fr',
     token: function(token) {
       $("#stripe_token").val(token.id);
-      $('#loading_modal').modal('show');
+      $('#loader').show();
       $("#stripe_form").submit();
     }
   });

@@ -1,0 +1,48 @@
+#loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: none;
+}
+
+
+.loader-wrapper {
+  height: 100vh;
+  width: 100%;
+  background: $blue;
+  opacity: 0.8;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  opacity: 0.9;
+}
+
+.circle {
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+  background: white;
+  animation: 1s infinite alternate grow;
+  &-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100px;
+  }
+  &2 {
+    animation-delay: 200ms;
+  }
+  &3 {
+    animation-delay: 400ms;
+  }
+}
+
+@keyframes grow {
+  from {
+    transform: scale(0.5);
+  }
+
+  to {
+    transform: scale(2);
+  }
+}

@@ -45,13 +45,11 @@
   </div>
 </div>
 
-<%= render 'shared/loading_modal' %>
-
 <%= content_for :after_js do %>
   <script>
     $(document).ready(function() {
       $('.button').click(function() {
-        $('#loading_modal').modal('show');
+        $('#loader').show();
       })
     })
   </script>

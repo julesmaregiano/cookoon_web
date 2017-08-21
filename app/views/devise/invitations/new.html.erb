@@ -4,6 +4,8 @@
 
   <b>Invitez vos proches à rejoindre Cookoon : nous vous offrons des services en plus et notre reconnaissance éternelle.</b>
 
+  <br><br>
+
   <%= simple_form_for resource, as: resource_name, url: invitation_path(resource_name), html: { method: :post} do |f| %>
     <%= devise_error_messages! %>
 
@@ -12,7 +14,7 @@
     <%= f.input :last_name, label: "Le nom de votre invité" %>
 
     <div class="text-center">
-      <%= f.button :submit, "Inviter", class: 'button button-blue' %>
+      <%= f.button :submit, "INVITER", class: 'button button-blue' %>
     </div>
 
   <% end %>

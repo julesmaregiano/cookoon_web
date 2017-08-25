@@ -27,4 +27,8 @@ class User < ApplicationRecord
     return false unless stripe_account
     stripe_account.payouts_enabled
   end
+
+  def last_recent_search
+    user_searches.recents.last
+  end
 end

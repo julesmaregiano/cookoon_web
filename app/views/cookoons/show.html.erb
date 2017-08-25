@@ -4,7 +4,7 @@
   <div class="block-presentation">
     <h3><%= @cookoon.name %></h3>
     <p>Appartement à <span class="text-gray"><%= @cookoon.address %></span></p>
-    <p>par <span class="text-gray"><%= @cookoon.user.first_name %></span></p>
+    <i>par <span class="text-gray"><%= @cookoon.user.first_name %></span></i>
   </div>
   <div>
     <p>
@@ -12,13 +12,13 @@
       eos commodi, impedit, quaerat culpa recusandae eius. Neque temporibus dicta
       debitis, quaerat quidem nihil, amet fugiat quisquam facere beatae!
       Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam illum hic
-      eos commodi, impedit, quaerat culpa recusandae eius. Neque temporibus dicta
-      debitis, quaerat quidem nihil, amet fugiat quisquam facere beatae!
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam illum hic
-      eos commodi, impedit, quaerat culpa recusandae eius. Neque temporibus dicta
-      debitis, quaerat quidem nihil, amet fugiat quisquam facere beatae!
+      eos commodi, impedit, quaerat culpa recusandae eius.
     </p>
   </div>
+
+    <i class="text-gray">Ce Cookoon de <%= @cookoon.surface %></span> m2 est idéal pour <%= @cookoon.capacity %></span> personnes</i>
+
+
   <div class="text-center" style='margin-top: 25px;'>
     <button type="button" class="button button-blue" data-toggle="modal" data-target="#recap-modal">
       Réserver

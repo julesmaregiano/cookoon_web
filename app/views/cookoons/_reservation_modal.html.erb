@@ -30,8 +30,8 @@
       </div>
       <div class="modal-footer">
         <p>Total : <span id='total-price'><%= humanized_money @reservation.price_for_rent_with_fees %></span> €</p>
+        <p style="font-size:12px; margin-bottom: 10px">Ce montant comprend les frais de services de la plateforme Cookoon</p>
         <%= f.submit 'Réserver', class: "button button-white" %>
-        <p style="font-size:12px; margin-top: 10px">Ce montant comprend les frais de services de la plateforme Cookoon</p>
       </div>
       <% end %>
     </div>

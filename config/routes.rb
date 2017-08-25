@@ -1,8 +1,7 @@
 Rails.application.routes.draw do
-  mount Attachinary::Engine => "/attachinary"
 
+  mount Attachinary::Engine => "/attachinary"
   devise_for :users, controllers: { registrations: 'registrations' }
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   # Different root for authenticated users
   authenticated do
@@ -11,21 +10,25 @@ Rails.application.routes.draw do
   root 'pages#home'
 
   resource :users, only: [:edit, :update]
-
+  resources :user_searches, only: :create
   resources :stripe_accounts, only: [:new, :create]
 
   resources :cookoons do
     resources :reservations, only: [:create]
   end
+
   resources :reservations, only: [:index, :show] do
     resources :paiements, only: [:new, :create]
   end
-  resources :user_searches, only: :create
 
+  # -------- HOST NAMESPACE ---------
   namespace :host do
     resources :reservations, only: [:index, :edit, :update] do
       resources :inventories, only: [:new, :create]
     end
     resources :inventories, only: [:edit, :update]
   end
+
+  # -------- CUSTOM ROUTES ---------
+  get 'setcookies', to: 'pages#setcookies'
 end

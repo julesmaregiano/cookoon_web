@@ -13,6 +13,6 @@ class ApplicationController < ActionController::Base
 
   def current_search
     return unless current_user
-    @current_search ||= current_user.user_searches.last
+    @current_search ||= current_user.last_recent_search
   end
 end

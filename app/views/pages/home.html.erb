@@ -17,3 +17,9 @@
     </div>
   </div>
 </div>
+
+<%= content_for :after_js do %>
+  <script>
+    getGeoLocation()
+  </script>
+<% end %>

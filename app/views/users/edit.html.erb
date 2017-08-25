@@ -12,7 +12,7 @@
 
     <div class="form-actions">
       <div>
-        <%= f.button :submit, "Mettre à jour", class: 'button button-blue'  %>
+        <%= f.button :submit, "Mettre à jour", class: 'button button-blue slowLoad'  %>
       </div>
       <% unless current_user.stripe_verified? %>
         <div class="light-padded">

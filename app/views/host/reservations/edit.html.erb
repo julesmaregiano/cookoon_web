@@ -34,7 +34,7 @@
       </div>
       <% if @reservation.pending_or_paid? %>
         <div class="flex-container">
-          <%= f.submit 'Accepter', name: "accept", class: 'button button-white' %>
+          <%= f.submit 'Accepter', name: "accept", class: 'button button-white slowLoad' %>
           <%= f.submit 'Refuser', name: "refuse", class: 'button button-white' %>
         </div>
       <% end %>
@@ -50,13 +50,3 @@
     <% end %>
   </div>
 </div>
-
-<%= content_for :after_js do %>
-  <script>
-    $(document).ready(function() {
-      $('.button').click(function() {
-        $('#loader').show();
-      })
-    })
-  </script>
-<% end %>

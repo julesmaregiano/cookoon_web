@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<!DOCTYPE html>
 <html>
   <head>
     <meta charset="UTF-8">
@@ -11,7 +10,11 @@
   </head>
   <body class="bg-cream">
     <%= render 'shared/loader' %>
-    <%= render 'shared/navbar' %>
+    <% if content_for?(:navbar) %>
+      <%= yield(:navbar) %>
+    <% else %>
+      <%= render 'shared/navbar' %>
+    <% end %>
     <%= render 'shared/side_nav' %>
     <%= render 'shared/flashes' %>
     <%= yield %>

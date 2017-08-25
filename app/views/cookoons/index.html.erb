@@ -7,6 +7,13 @@
     <% else %>
       <%= render 'cookoons_and_map' %>
     <% end %>
-
   </div>
 </div>
+
+<% unless @lat_lng %>
+  <%= content_for :after_js do %>
+    <script>
+      getGeoLocation()
+    </script>
+  <% end %>
+<% end %>

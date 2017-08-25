@@ -13,6 +13,6 @@
     <% end %>
     <%= f.input :dob, as: :date, start_year: Date.today.year - 90, end_year: Date.today.year - 12, selected: {year: @infos[:year], day: @infos[:day], month: @infos[:month]}, label: "Votre date de naissance"  %>
     <%= f.input :iban, label: "Votre numéro de compte (IBAN)" %>
-    <%= f.button :submit, "Connecter mon compte", class: 'button button-blue' %>
+    <%= f.button :submit, "Connecter mon compte", class: 'button button-blue slowLoad' %>
   <% end %>
 </div>

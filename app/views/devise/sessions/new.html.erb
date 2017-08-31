@@ -1,9 +1,13 @@
 <div class="container">
-  <h2>Connectez-vous</h2>
+
+  <div class="home-title title-block text-center">
+      <h1>COOKOON</h1>
+      <h3>RECEVONS PARTOUT !</h3>
+  </div>
 
   <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <div class="form-inputs">
-          <%= f.input :email, required: false, autofocus: true %>
+          <%= f.input :email, label: "Adresse email", required: false, autofocus: true %>
           <%= f.input :password, required: false %>
       <div class="home-links links-block">
           <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>

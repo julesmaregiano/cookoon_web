@@ -20,14 +20,7 @@
     </p>
   </div>
 
-    <i class="text-gray">Ce Cookoon de <%= @cookoon.surface %></span> m2 est idéal pour <%= @cookoon.capacity %></span> personnes</i>
-
-
-  <div class="text-center" style='margin-top: 25px;'>
-    <button type="button" class="button button-blue" data-toggle="modal" data-target="#recap-modal">
-      Réserver
-    </button>
-  </div>
+    <i class="text-gray">Ce Cookoon de <b><%= @cookoon.surface %> m2</b> est idéal pour <b><%= @cookoon.capacity %></b> personnes</i>
 </div>
 
 <!-- Modal -->
@@ -62,3 +55,10 @@
     });
   </script>
 <% end %>
+
+<!-- Booking -->
+  <div class="fixed-bottom bottom-block">
+    <button type="button" class="button button-fixed" data-toggle="modal" data-target="#recap-modal">
+      RESERVER
+    </button>
+  </div>

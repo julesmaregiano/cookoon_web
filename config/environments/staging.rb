@@ -62,6 +62,15 @@ Rails.application.configure do
   # config.active_job.queue_name_prefix = "cookoon_web_#{Rails.env}"
   config.action_mailer.perform_caching = false
 
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    :user_name => ENV['MAILTRAP_USERNAME'],
+    :password => ENV['MAILTRAP_PASSWORD'],
+    :address => 'smtp.mailtrap.io',
+    :domain => 'smtp.mailtrap.io',
+    :port => '2525',
+    :authentication => :cram_md5
+  }
   config.action_mailer.default_url_options = { host: 'cookoon-staging.herokuapp.com' }
 
   # Ignore bad email addresses and do not raise email delivery errors.

@@ -10,9 +10,9 @@ class PaiementsController < ApplicationController
       token: params[:stripe_token],
       reservation: @reservation
     )
-    
+
     if paiement_service.create_charge_and_update_reservation
-      redirect_to @reservation, flash: { paiement_succeed: true }
+      redirect_to cookoons_path, flash: { paiement_succeed: true }
     else
       flash[:alert] = paiement_service.displayable_errors
       render :new

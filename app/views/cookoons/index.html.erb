@@ -14,10 +14,19 @@
   <% end %>
 </div>
 
-<% unless @lat_lng %>
-  <%= content_for :after_js do %>
+<!-- Paiement success modal -->
+<%= render 'paiements/succeed' %>
+
+<%= content_for :after_js do %>
+  <% unless @lat_lng %>
+    <script>getGeoLocation()</script>
+  <% end %>
+
+  <% if flash[:paiement_succeed] %>
     <script>
-      getGeoLocation()
+      $(document).ready(function() {
+        $('#paiement_succeed').modal('show');
+      });
     </script>
   <% end %>
 <% end %>

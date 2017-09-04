@@ -5,13 +5,13 @@
 <%= render 'user_searches/search_form' %>
 
 <div class="container">
-  <div class="row">
-    <% if @cookoons.empty? %>
-     <h3>Aucun Cookoon dans cette zone, veuillez essayer une autre recherche</h3>
-    <% else %>
+  <% if @cookoons.empty? %>
+    <h3>Aucun Cookoon dans cette zone, veuillez essayer une autre recherche</h3>
+  <% else %>
+    <div class="row">
       <%= render 'cookoons_and_map' %>
-    <% end %>
-  </div>
+    </div>
+  <% end %>
 </div>
 
 <% unless @lat_lng %>

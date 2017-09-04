@@ -30,7 +30,14 @@
   </div>
 
   <div class="text-center">
-    <p style="font-size:12px; margin-top: 15px">Après cette étape, votre carte bleue sera débitée du montant indiquée. Ce dernier comprend les frais de services de la plateforme Cookoon.</p>
+    <div style="font-size:12px; margin-top: 15px">
+      <p>
+        Votre carte bleue ne sera débitée que si l'Hôte accepte votre demande de location.
+      </p>
+      <p>
+        Attention : nous procédons tout de même à une demande d'autorisation de paiement sur votre compte.
+      </p>
+    </div>
   </div>
 
   <%= form_tag reservation_paiements_path(@reservation), id: 'stripe_form' do %>

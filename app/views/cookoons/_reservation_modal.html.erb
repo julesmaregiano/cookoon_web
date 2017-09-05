@@ -27,6 +27,18 @@
             <%= f.input :duration, input_html: {value: @reservation.duration, data: {min: 1, max: 5}}, as: :hidden %>
           </div>
         </div>
+        <div class="recap-catering">
+          <div class="flex-container">
+            <div class='service-presentation'>
+              <p class="service-description">
+                Souhaitez-vous une proposition de service d’un traiteur ?
+              </p>
+            </div>
+            <div class="service-input">
+              <%= f.input :catering, label: false %>
+            </div>
+          </div>
+        </div>
       </div>
       <div class="modal-footer">
         <h4>TOTAL : <span id='total-price'><%= humanized_money @reservation.price_for_rent_with_fees %></span> €</h4>

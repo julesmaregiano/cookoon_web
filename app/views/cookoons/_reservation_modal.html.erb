@@ -15,7 +15,7 @@
           <%= simple_form_for [@cookoon, @reservation] do |f| %>
           <div class="recap-datetime">
             <p>Vous arrivez le:</p>
-            <%= f.input :date, as: :string, label: false, input_html: { value: @reservation.date.strftime('%e %B à %k:%M') }, readonly: true %>
+            <%= f.input :date, as: :string, label: false, input_html: { value: l(@reservation.date, format: '%e %B à %k:%M') }, readonly: true %>
           </div>
           <div class="recap-duration">
             <p>Pour une durée de :</p>
@@ -57,6 +57,7 @@
       weekStart: 1,
       minuteStep: 30,
       format: 'd MM à h:ii',
+      language: 'fr',
       startDate: new Date()
     });
   </script>

@@ -10,3 +10,4 @@
 //= require attachinary
 //= require gmaps/google
 //= require_tree .
+//= require_tree ./locale

@@ -40,7 +40,7 @@ class CookoonsController < ApplicationController
   def prepare_infos
     @search_infos = {
       position: @last_search.address.try(:split, " - ").try(:first) || 'Autour',
-      time_slot: @last_search.date.try(:strftime, '%e %B %k:%M') || 'Tout de suite',
+      time_slot: l(@last_search.date, format: '%e %B %k:%M') || 'Tout de suite',
       people_number: @last_search.number || 4
     }
   end

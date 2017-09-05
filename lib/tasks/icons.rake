@@ -1,5 +1,4 @@
 require 'rake'
-require 'byebug'
 
 namespace :icons do
 

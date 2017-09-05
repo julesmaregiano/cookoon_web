@@ -10,7 +10,8 @@ module CarouselHelper
     end
 
     def html
-      content = safe_join([indicators, slides, controls])
+      # controls disabled just add controls in array to reactivate
+      content = safe_join([indicators, slides])
       content_tag(:div, content, id: uid, class: 'carousel slide')
     end
 

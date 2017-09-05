@@ -99,6 +99,7 @@ GEM
     globalid (0.4.0)
       activesupport (>= 4.2.0)
     gmaps4rails (2.1.2)
+    hammerjs-rails (2.0.4)
     http-cookie (1.0.3)
       domain_name (~> 0.5)
     i18n (0.8.4)
@@ -325,6 +326,7 @@ DEPENDENCIES
   font-awesome-sass
   geocoder
   gmaps4rails
+  hammerjs-rails
   i18n-debug
   jbuilder (~> 2.5)
   jquery-fileupload-rails

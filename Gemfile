@@ -37,6 +37,7 @@ gem 'font-awesome-sass'
 gem 'simple_form'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
+gem 'hammerjs-rails'
 
 gem 'momentjs-rails', '>= 2.9.0'
 

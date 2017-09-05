@@ -1,8 +1,8 @@
-/* -------------------------------------
- * Utilities classes
- * These are examples of utilities classes
- * Feel free to change them and create your own
- * ------------------------------------- */
+// body settings
+body {
+  position: relative;
+  min-height: 100vh;
+}
 
 // Paddings
 .padded {
@@ -69,6 +69,7 @@
   margin-left: 10px;
 }
 
+// Links
 a {
   color: black;
   text-decoration: none;
@@ -86,7 +87,6 @@ a {
 }
 
 // Horizontal Rules
-
 hr {
   margin-top : 22px;
   margin-bottom: 22px;
@@ -95,7 +95,6 @@ hr {
 
 
 // Fonts
-
 h2 {
   margin-bottom: 22px;
   font-size: 28px;

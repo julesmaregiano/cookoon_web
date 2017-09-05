@@ -1,5 +1,5 @@
 <% content_for :navbar do %>
-  <%= render 'shared/navbar_light' %>
+  <%= render 'shared/navbar_transparent' %>
 <% end %>
 
 <%= carousel_for(@cookoon.photos) %>
@@ -52,6 +52,16 @@
         handler.fitMapToBounds();
         handler.getMap().setZoom(14);
       });
+    });
+  </script>
+
+  <script>
+    $('.carousel').hammer().bind("swipeleft", function() {
+      $(this).carousel('next');
+    });
+
+    $('.carousel').hammer().bind("swiperight", function() {
+      $(this).carousel('prev');
     });
   </script>
 <% end %>

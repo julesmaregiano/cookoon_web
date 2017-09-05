@@ -12,8 +12,6 @@ class ReservationsController < ApplicationController
   def create
     @reservation.price = @reservation.price_for_rent
     if @reservation.save
-      flash[:notice] = 'Votre réservation a bien été prise en compte'
-      #TODO: Go to payment
       redirect_to new_reservation_paiement_path(@reservation)
     else
       flash[:alert] = 'Erreur'
@@ -32,6 +30,6 @@ class ReservationsController < ApplicationController
   end
 
   def reservation_params
-    params.require(:reservation).permit(:duration, :date).merge(cookoon: @cookoon)
+    params.require(:reservation).permit(:duration, :date, :catering).merge(cookoon: @cookoon)
   end
 end

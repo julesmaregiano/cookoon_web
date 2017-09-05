@@ -5,19 +5,28 @@
 <%= render 'user_searches/search_form' %>
 
 <div class="container">
-  <div class="row">
-    <% if @cookoons.empty? %>
-     <h3>Aucun Cookoon dans cette zone, veuillez essayer une autre recherche</h3>
-    <% else %>
+  <% if @cookoons.empty? %>
+    <h3>Aucun Cookoon dans cette zone, veuillez essayer une autre recherche</h3>
+  <% else %>
+    <div class="row">
       <%= render 'cookoons_and_map' %>
-    <% end %>
-  </div>
+    </div>
+  <% end %>
 </div>
 
-<% unless @lat_lng %>
-  <%= content_for :after_js do %>
+<!-- Paiement success modal -->
+<%= render 'paiements/succeed' %>
+
+<%= content_for :after_js do %>
+  <% unless @lat_lng %>
+    <script>getGeoLocation()</script>
+  <% end %>
+
+  <% if flash[:paiement_succeed] %>
     <script>
-      getGeoLocation()
+      $(document).ready(function() {
+        $('#paiement_succeed').modal('show');
+      });
     </script>
   <% end %>
 <% end %>

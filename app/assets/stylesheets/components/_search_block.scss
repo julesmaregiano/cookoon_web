@@ -74,6 +74,16 @@
 }
 
 
+
+@media (max-width: 400px) {
+  #infos-address {
+    text-overflow: ellipsis;
+    max-width: 70px;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+}
+
 .search .form-control::-webkit-input-placeholder { color: white; }  /* WebKit, Blink, Edge */
 .search .form-control:-moz-placeholder { color: white; }  /* Mozilla Firefox 4 to 18 */
 .search .form-control::-moz-placeholder { color: white; }  /* Mozilla Firefox 19+ */

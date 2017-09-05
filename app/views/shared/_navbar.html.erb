@@ -1,6 +1,10 @@
 <div class="navbar-cookoon">
   <div class="navbar-container">
-    <i id="side-nav-clicker" class="fa fa-bars" aria-hidden="true"></i>
+    <i id="side-nav-clicker" class="fa fa-bars notifiable" aria-hidden="true">
+      <% if pending_reservations? %>
+        <span class="notif notif-topbar"></span>
+      <% end %>
+    </i>
     <%= link_to root_path do %>
     <i class="fa fa-home" aria-hidden="true"></i>
     <% end %>

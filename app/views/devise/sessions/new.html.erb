@@ -1,5 +1,8 @@
-<div class="container">
+<% content_for :navbar do %>
+  <%= render 'shared/navbar_light' %>
+<% end %>
 
+<div class="container">
   <div class="home-title title-block text-center">
       <h1>COOKOON</h1>
       <h3>RECEVONS PARTOUT !</h3>
@@ -16,5 +19,4 @@
       </div>
     </div>
   <% end %>
-
 </div>

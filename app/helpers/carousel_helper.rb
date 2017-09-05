@@ -10,7 +10,8 @@ module CarouselHelper
     end
 
     def html
-      content = safe_join([indicators, slides, controls])
+      # controls disabled just add controls in array to reactivate
+      content = safe_join([indicators, slides])
       content_tag(:div, content, id: uid, class: 'carousel slide')
     end
 
@@ -46,7 +47,7 @@ module CarouselHelper
         class: (is_active ? 'item active' : 'item'),
       }
 
-      content_tag(:div, cl_image_tag(image.path, :height => 400, width: :auto, :crop => :mpad, :background=>"black"), options)
+      content_tag(:div, cl_image_tag(image.path, height: 400, width: :auto, crop: :lpad, background: "black"), options)
     end
 
     def controls

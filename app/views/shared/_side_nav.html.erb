@@ -1,24 +1,32 @@
-<div class="side-nav">
-  <div class="side-nav-container">
-    <div class="text-right" id="side-nav-closer">
-      <i class="fa fa-times" aria-hidden="true" style="font-size: 24px;"></i>
-    </div>
-    <% if current_user %>
-      <div class="side-nav-userblock">
-        <% if current_user.photo? %>
-	        <%= cl_image_tag(current_user.photo.path, { size: '50x50', crop: :thumb, gravity: :face, class: 'avatar-large' }) %>
-        <% else %>
-          <%= image_tag 'http://via.placeholder.com/50x50', class: 'avatar-large' %>
-        <% end %>
-        <%= link_to current_user.full_name, edit_users_path %>
+<div class="side-nav-wrapper">
+  <div class="overlay"></div>
+  <div class="side-nav">
+    <div class="side-nav-container">
+      <div class="text-right" id="side-nav-closer">
+        <i class="fa fa-times" aria-hidden="true" style="font-size: 24px;"></i>
       </div>
-    <% end %>
-    <ul>
-      <li><i class="fa fa-calendar-o" aria-hidden="true"></i>&nbsp; <%= link_to 'MES RÉSERVATIONS', reservations_path %></li>
-      <li><i class="fa fa-exchange" aria-hidden="true"></i>&nbsp; <%= link_to 'MON ESPACE HÔTE', host_reservations_path %></li>
-      <li><i class="fa fa-send-o" aria-hidden="true"></i>&nbsp; <%= link_to 'PARRAINER MES AMIS', new_user_invitation_path %></li>
-      <li><i class="fa fa-envelope-o" aria-hidden="true"></i>&nbsp; <%= link_to 'NOUS CONTACTER', '#' %></li>
-    </ul>
-    <p class='pinned-bottom'>Conditions Générales</p>
+      <% if current_user %>
+        <div class="side-nav-userblock">
+          <% if current_user.photo? %>
+  	        <%= cl_image_tag(current_user.photo.path, { size: '50x50', crop: :thumb, gravity: :face, class: 'avatar-large' }) %>
+          <% else %>
+            <%= image_tag 'http://via.placeholder.com/50x50', class: 'avatar-large' %>
+          <% end %>
+          <%= link_to current_user.full_name, edit_users_path %>
+        </div>
+      <% end %>
+      <ul>
+        <li class="notifiable">
+          <i class="fa fa-calendar-o" aria-hidden="true"></i>&nbsp; <%= link_to 'MES RÉSERVATIONS', reservations_path %>
+          <% if pending_reservations? %>
+            <span class="notif notif-sidebar"></span>
+          <% end %>
+        </li>
+        <li><i class="fa fa-exchange" aria-hidden="true"></i>&nbsp; <%= link_to 'MON ESPACE HÔTE', host_reservations_path %></li>
+        <li><i class="fa fa-send-o" aria-hidden="true"></i>&nbsp; <%= link_to 'PARRAINER MES AMIS', new_user_invitation_path %></li>
+        <li><i class="fa fa-envelope-o" aria-hidden="true"></i>&nbsp; <%= link_to 'NOUS CONTACTER', '#' %></li>
+      </ul>
+      <p class='pinned-bottom'>Conditions Générales</p>
+    </div>
   </div>
 </div>

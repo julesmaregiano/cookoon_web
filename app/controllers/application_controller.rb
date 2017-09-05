@@ -15,4 +15,9 @@ class ApplicationController < ActionController::Base
     return unless current_user
     @current_search ||= current_user.last_recent_search
   end
+
+  # disable devises flashes
+  def is_flashing_format?
+    false
+  end
 end

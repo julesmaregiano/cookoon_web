@@ -6,6 +6,8 @@
 //= require underscore
 //= require jquery-fileupload/basic
 //= require cloudinary/jquery.cloudinary
+//= require hammer
 //= require attachinary
 //= require gmaps/google
 //= require_tree .
+//= require_tree ./locale

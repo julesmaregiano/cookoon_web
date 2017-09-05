@@ -19,6 +19,10 @@ class User < ApplicationRecord
     end
   end
 
+  def paid_reservations
+    reservations.paid
+  end
+
   def stripe_account
     @stripe_account ||= StripeAccountService.new(user: self).retrieve_stripe_account
   end

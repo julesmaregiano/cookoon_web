@@ -31,12 +31,20 @@
           <div class="flex-container">
             <div class='service-presentation'>
               <p class="service-description">
-                Souhaitez-vous une proposition de service d’un traiteur ?
+                Je souhaite être contacté par le service traiteur
               </p>
             </div>
+            <!-- ==== CUSTOM CHECKBOX ==== -->
             <div class="service-input">
-              <%= f.input :catering, label: false %>
+              <div class="form-group boolean optional reservation_catering">
+                <input value="0" type="hidden" name="reservation[catering]">
+                <input class="boolean optional hidden" type="checkbox" value="1" name="reservation[catering]" id="reservation_catering">
+                <label class="boolean optional toggle" for="reservation_catering">
+                  <span class="toggle-handler"></span>
+                </label>
+              </div>
             </div>
+            <!-- ==== FIN CUSTOM CHECKBOX ==== -->
           </div>
         </div>
       </div>

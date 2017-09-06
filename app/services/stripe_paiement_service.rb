@@ -97,7 +97,7 @@ class StripePaiementService
       @charge = Stripe::Charge.create({
         amount: reservation.price_for_rent_with_fees.fractional,
         currency: 'eur',
-        customer: @customer.stripe_customer_id,
+        customer: @customer.id,
         description:  "Paiement pour #{reservation.cookoon.name}",
         capture: false,
         destination: {

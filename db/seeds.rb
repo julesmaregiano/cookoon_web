@@ -46,7 +46,7 @@ cookoons_attributes = [
     surface: 100,
     price_cents: 3000,
     price_currency: "EUR",
-    address: "85 rue d'Aboukir', 75002 Paris",
+    address: "85 rue d'Aboukir, 75002 Paris",
     capacity: "8",
     category: 'Appartement',
     description: "La rue Montorgueil, Numa, les Start up et l'appartement de Marie & Guillaume, nous sommes dans le Sentier. A quelques minutes du métro (Sentier, ligne 3), l'appartement a bénéficié des talents d'architecte d'intérieur de Marie qui a su conférer un style année 30 modernisé à son intérieur. Ici tout est ouvert, la cuisine est séparée du salon par un bar qui cotoie également la partie salle à manger. Un lieu idéal pour une journée de formation, un rdv professionnel mais également un dîner entre amis.",

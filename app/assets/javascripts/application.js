@@ -1,4 +1,3 @@
-//= require turbolinks
 //= require jquery
 //= require jquery_ujs
 //= require jquery-ui
@@ -10,5 +9,6 @@
 //= require hammer
 //= require attachinary
 //= require gmaps/google
+//= require turbolinks
 //= require_tree .
 //= require_tree ./locale

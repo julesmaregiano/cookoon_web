@@ -2,7 +2,6 @@ document.addEventListener("turbolinks:load", function() {
   // Show / Hide search
   $('.search-body').hide();
   $('.search-header').click(function() {
-    console.log('click');
     $('.search-body').slideToggle();
   });
 

@@ -44,16 +44,14 @@
   </div>
 </div>
 
-<%= content_for(:after_js) do %>
-  <script>
-    $(function () {
-      $('#user_search_date').datetimepicker({
-        autoclose: true,
-        weekStart: 1,
-        minuteStep: 30,
-        language: 'fr',
-        startDate: new Date()
-      });
+<script>
+  $(function () {
+    $('#user_search_date').datetimepicker({
+      autoclose: true,
+      weekStart: 1,
+      minuteStep: 30,
+      language: 'fr',
+      startDate: new Date()
     });
-  </script>
-<% end %>
+  });
+</script>

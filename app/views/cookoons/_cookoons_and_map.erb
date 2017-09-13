@@ -23,22 +23,20 @@
   <div id="map" class="map-cookoon-index"></div>
 </div>
 
-<% content_for(:after_js) do %>
-  <script>
-    $(document).ready(function() {
-      var handler = Gmaps.build('Google');
-      handler.buildMap({
-        provider: {
-          scrollwheel: false
-        },
-        internal: {
-          id: 'map'
-        }
-      }, function() {
-        markers = handler.addMarkers(<%=raw @hash.to_json %>);
-        handler.bounds.extendWith(markers);
-        handler.fitMapToBounds();
-      });
+<script>
+  document.addEventListener("turbolinks:load", function() {
+    var handler = Gmaps.build('Google');
+    handler.buildMap({
+      provider: {
+        scrollwheel: false
+      },
+      internal: {
+        id: 'map'
+      }
+    }, function() {
+      markers = handler.addMarkers(<%=raw @hash.to_json %>);
+      handler.bounds.extendWith(markers);
+      handler.fitMapToBounds();
     });
-  </script>
-<% end %>
+  });
+</script>

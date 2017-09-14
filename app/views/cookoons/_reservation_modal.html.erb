@@ -12,7 +12,7 @@
               <span id="cookoon-price"><%= humanized_money @cookoon.price %></span> <%= currency_symbol %> par heure
             </span>
           </div>
-          <%= simple_form_for [@cookoon, @reservation] do |f| %>
+          <%= simple_form_for [@cookoon, @reservation], remote: true do |f| %>
           <div class="recap-datetime">
             <p>Vous arrivez le:</p>
             <%= f.input :date, as: :string, label: false, input_html: { value: l(@reservation.date, format: '%e %B à %k:%M') }, readonly: true %>

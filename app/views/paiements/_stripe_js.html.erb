@@ -13,17 +13,19 @@
     }
   });
 
-  document.getElementById('customButton').addEventListener('click', function(e) {
-    // Open Checkout with further options:
-    handler.open({
-      name: 'Cookoon.fr',
-      description: 'Paiement de votre réservation',
-      zipCode: true,
-      currency: 'eur',
-      amount: <%= @reservation.price_for_rent_with_fees.fractional %>
+  document.addEventListener("turbolinks:load", function() {
+    document.getElementById('customButton').addEventListener('click', function(e) {
+      // Open Checkout with further options:
+      handler.open({
+        name: 'Cookoon.fr',
+        description: 'Paiement de votre réservation',
+        zipCode: true,
+        currency: 'eur',
+        amount: <%= @reservation.price_for_rent_with_fees.fractional %>
+      });
+      e.preventDefault();
     });
-    e.preventDefault();
-  });
+  })
 
   // Close Checkout on page navigation:
   window.addEventListener('popstate', function() {

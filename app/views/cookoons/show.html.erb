@@ -25,46 +25,44 @@
 <!-- Map -->
 <div id="map" class="map-cookoon-show"></div>
 
-<% content_for(:after_js) do %>
-  <script>
-    $(document).ready(function() {
-      var handler = Gmaps.build('Google');
-      handler.buildMap({
-        provider: {
-          scrollwheel: false
-        },
-        internal: {
-          id: 'map'
-        }
-      }, function() {
-        markers = handler.addMarkers([
-          {
-            "lat": <%= @cookoon.latitude %>,
-            "lng": <%= @cookoon.longitude %>,
-            "infowindow": "<h3><%= @cookoon.name %></h3>"
-          }
-        ]);
-        handler.bounds.extendWith(markers);
-        handler.fitMapToBounds();
-        handler.getMap().setZoom(14);
-      });
-    });
-  </script>
-
-  <script>
-    $('.carousel').hammer().bind("swipeleft", function() {
-      $(this).carousel('next');
-    });
-
-    $('.carousel').hammer().bind("swiperight", function() {
-      $(this).carousel('prev');
-    });
-  </script>
-<% end %>
-
 <!-- Booking -->
-  <div class="fixed-bottom bottom-block">
-    <button type="button" class="button button-fixed" data-toggle="modal" data-target="#recap-modal">
-      RESERVER
-    </button>
-  </div>
+<div class="fixed-bottom bottom-block">
+  <button type="button" class="button button-fixed" data-toggle="modal" data-target="#recap-modal">
+    RESERVER
+  </button>
+</div>
+
+<script>
+  document.addEventListener("turbolinks:load", function() {
+    var handler = Gmaps.build('Google');
+    handler.buildMap({
+      provider: {
+        scrollwheel: false
+      },
+      internal: {
+        id: 'map'
+      }
+    }, function() {
+      markers = handler.addMarkers([
+        {
+          "lat": <%= @cookoon.latitude %>,
+          "lng": <%= @cookoon.longitude %>,
+          "infowindow": "<h3><%= @cookoon.name %></h3>"
+        }
+      ]);
+      handler.bounds.extendWith(markers);
+      handler.fitMapToBounds();
+      handler.getMap().setZoom(14);
+    });
+  });
+</script>
+
+<script>
+  $('.carousel').hammer().bind("swipeleft", function() {
+    $(this).carousel('next');
+  });
+
+  $('.carousel').hammer().bind("swiperight", function() {
+    $(this).carousel('prev');
+  });
+</script>

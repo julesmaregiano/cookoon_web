@@ -1,4 +1,4 @@
-$(document).ready(function() {
+document.addEventListener("turbolinks:load", function() {
   var flat_address = $('#user_search_address').get(0);
 
   if (flat_address) {

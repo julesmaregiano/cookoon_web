@@ -1,5 +1,5 @@
 <div class="container">
-    <b>Trouvez le Cookoon dont vous avez besoin</b>
+  <b>Trouvez le Cookoon dont vous avez besoin</b>
 </div>
 
 <%= render 'user_searches/search_form' %>
@@ -17,16 +17,14 @@
 <!-- Paiement success modal -->
 <%= render 'paiements/succeed' %>
 
-<%= content_for :after_js do %>
-  <% unless @lat_lng %>
-    <script>getGeoLocation()</script>
-  <% end %>
+<% unless @lat_lng %>
+  <script>getGeoLocation()</script>
+<% end %>
 
-  <% if flash[:paiement_succeed] %>
-    <script>
-      $(document).ready(function() {
-        $('#paiement_succeed').modal('show');
-      });
-    </script>
-  <% end %>
+<% if flash[:paiement_succeed] %>
+  <script>
+    document.addEventListener("turbolinks:load", function() {
+      $('#paiement_succeed').modal('show');
+    });
+  </script>
 <% end %>

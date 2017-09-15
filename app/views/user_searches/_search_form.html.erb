@@ -8,7 +8,7 @@
     </div>
     <div class="search-body">
       <div class="container">
-        <%= simple_form_for @new_search do |f| %>
+        <%= simple_form_for @new_search, remote: true do |f| %>
           <div class="row">
             <div class="col-xs-12">
               <%= f.input :address, label: false, placeholder: 'Ville, adresse ...', input_html: { value: @last_search.address } %>
@@ -44,16 +44,14 @@
   </div>
 </div>
 
-<%= content_for(:after_js) do %>
-  <script>
-    $(function () {
-      $('#user_search_date').datetimepicker({
-        autoclose: true,
-        weekStart: 1,
-        minuteStep: 30,
-        language: 'fr',
-        startDate: new Date()
-      });
+<script>
+  document.addEventListener("turbolinks:load", function() {
+    $('#user_search_date').datetimepicker({
+      autoclose: true,
+      weekStart: 1,
+      minuteStep: 30,
+      language: 'fr',
+      startDate: new Date()
     });
-  </script>
-<% end %>
+  });
+</script>

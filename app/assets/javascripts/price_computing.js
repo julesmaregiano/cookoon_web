@@ -1,10 +1,12 @@
-$('.reservation-option').change(function() {
-  compute_price_for_host($(this));
-})
+document.addEventListener("turbolinks:load", function() {
+  $('.reservation-option').change(function() {
+    compute_price_for_host($(this));
+  });
 
-$('#reservation_duration').change(function() {
-  compute_price_for_rent($(this));
-});
+  $('#reservation_duration').change(function() {
+    compute_price_for_rent($(this));
+  });
+})  
 
 function compute_price_for_host(input) {
   var displayPrice = parseFloat($('#display-price').text());

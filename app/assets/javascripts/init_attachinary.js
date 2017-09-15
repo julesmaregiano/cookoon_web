@@ -1,4 +1,4 @@
-$(document).ready(function() {
+document.addEventListener("turbolinks:load", function() {
   $.cloudinary.responsive();
-  $('.attachinary-input').attachinary();
+  if ($('.attachinary_container').size() === 0) { $('.attachinary-input').attachinary() };
 });

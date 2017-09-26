@@ -31,4 +31,8 @@ Rails.application.routes.draw do
 
   # -------- CUSTOM ROUTES ---------
   get 'setcookies', to: 'pages#setcookies'
+  get 'en-savoir-plus', to: 'pages#about'
+  get 'en-savoir-plus/louer-un-cookoon', to: 'pages#about_rent'
+  get 'en-savoir-plus/devenir-hote', to: 'pages#about_hosting'
+  get 'en-savoir-plus/garanties-cookoon', to: 'pages#about_warranties'
 end

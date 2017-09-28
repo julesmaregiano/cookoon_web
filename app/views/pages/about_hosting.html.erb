@@ -41,55 +41,84 @@
       <div class="row">
           <div class="col-lg-12 text-center">
               <div class="section-heading">
-                  <h2>En toute simplicité</h2>
-                  <p class="text-muted">Comment ça marche ?</p>
-                  <hr>
+                  <h2>Devenir Hôte</h2>
+                  <p class="text-center">Et pourquoi pas ?</p>
               </div>
           </div>
       </div>
 
-      <div class="col-md-8" style="margin-bottom: 30px">
-          <div class="container-fluid">
-              <div class="row">
-                  <div class="col-md-6">
-                      <div class="feature-item">
-                          <i class="icon-home text-primary"></i>
-                          <h3>Etre Membre</h3>
-                          <p class="text-muted">Chez Cookoon, tout le monde se connaît, ou presque.
-                            Chaque membre est invité par un parrain qui est responsable de son filleul. La communauté se construit sur des valeurs d'échange et de respect.</p>
-                            <%= link_to 'En savoir plus >', en_savoir_plus_louer_un_cookoon_url, class: 'no-button' %>
-                      </div>
-                  </div>
+      <div class="row" style="margin-bottom: 30px">
+          <div class="col-xs-3 text-center">
+                <i class="co co-bank fa-5x" aria-hidden="true"></i>
+          </div>
 
-                  <div class="col-md-6">
-                      <div class="feature-item">
-                          <i class="icon-home text-primary"></i>
-                          <h3>Etre Membre</h3>
-                          <p class="text-muted">Chez Cookoon, tout le monde se connaît, ou presque.
-                            Chaque membre est invité par un parrain qui est responsable de son filleul. La communauté se construit sur des valeurs d'échange et de respect.</p>
-                            <%= link_to 'En savoir plus >', en_savoir_plus_louer_un_cookoon_url, class: 'no-button' %>
-                      </div>
-                  </div>
+          <div class="col-xs-9">
+            <h3>Mettez votre appartement au traval</h3>
+            <p> Rentabilisez votre espace quand vous ne l’occupez pas, sans en subir les contraintes.</p>
+          </div>
 
-                  <div class="col-md-6">
-                      <div class="feature-item">
-                          <i class="icon-home text-primary"></i>
-                          <h3>Etre Membre</h3>
-                          <p class="text-muted">Chez Cookoon, tout le monde se connaît, ou presque.
-                            Chaque membre est invité par un parrain qui est responsable de son filleul. La communauté se construit sur des valeurs d'échange et de respect.</p>
-                            <%= link_to 'En savoir plus >', en_savoir_plus_louer_un_cookoon_url, class: 'no-button' %>
-                      </div>
-                  </div>
+      </div>
 
-                  <div class="col-md-6">
-                      <div class="feature-item">
-                          <i class="icon-home text-primary"></i>
-                          <h3>Etre Membre</h3>
-                          <p class="text-muted">Chez Cookoon, tout le monde se connaît, ou presque.
-                            Chaque membre est invité par un parrain qui est responsable de son filleul. La communauté se construit sur des valeurs d'échange et de respect.</p>
-                            <%= link_to 'En savoir plus >', en_savoir_plus_louer_un_cookoon_url, class: 'no-button' %>
-                      </div>
-                  </div>
+        <div class="row" style="margin-bottom: 30px">
+            <div class="col-xs-3 text-center">
+                      <i class="co co-concierge fa-5x" aria-hidden="true"></i>
+            </div>
+
+            <div class="col-xs-9">
+              <h3>Sans les contraintes habituelles</h3>
+              <p>Les locataires ne restent que quelques heures, et nos services complémentaires vous permettent de vous éviter toute gêne.</p>
+            </div>
+
+        </div>
+
+        <div class="row" style="margin-bottom: 30px">
+            <div class="col-xs-3 text-center">
+                      <i class="co co-user fa-5x" aria-hidden="true"></i>
+            </div>
+
+            <div class="col-xs-9">
+              <h3>Des membres vérifiés</h3>
+              <p>Chaque membre est invité par un autre membre; tout le monde est noté après chaque location.<br>
+                Vous pouvez y aller rassuré.</p>
+            </div>
+
+        </div>
+
+        <div class="row" style="margin-bottom: 30px">
+            <div class="col-xs-3 text-center">
+                      <i class="co co-check fa-5x" aria-hidden="true"></i>
+            </div>
+
+            <div class="col-xs-9">
+              <h3>Vous êtes couvert</h3>
+              <p>Notre partenaire d’assurance : AXA. Un acteur majeur qui garantit chaque location de tout dommage imprévisible.</p>
+            </div>
+
+        </div>
+
+      </div>
+  </section>
+
+
+  <section id="morecontent">
+    <div class="container text-center" style="background-color: #fafeef; padding-bottom: 30px">
+      <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
+         <div class="flipper">
+             <div class="front">
+                  <!-- front content -->
+                  <i class="co co-reversed--camera fa-5x" aria-hidden="true" style="-webkit-text-fill-color:white"></i>
+                  <h3>D'autres idées ?</h3>
+             </div>
+             <div class="back">
+                  <!-- back content -->
+                  <i class="co co-reversed--camera fa-3x" aria-hidden="true" style="-webkit-text-fill-color:white"></></i>
+                  <h4>D'autres idées ?</h4>
+                  <p>Faites-nous part de toutes vos expérience avec #cookoonlife</p>
+             </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
 <section id="warranty">
   <div class="container" style="margin: 20px 0px">
@@ -115,7 +144,7 @@
                     Demandez leur une invitation !</b>
               </div>
               <div class="text-center" style="margin-bottom: 20px">
-                    <%= link_to 'EN SAVOIR PLUS', en_savoir_plus_url, class: 'btn btn-default button button-white' %>
+                    <%= link_to 'TROUVER UN PARRAIN', en_savoir_plus_url, class: 'btn btn-default button button-white' %>
               </div>
             </div>
         </section>

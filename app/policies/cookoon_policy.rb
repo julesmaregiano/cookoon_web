@@ -9,7 +9,7 @@ class CookoonPolicy < ApplicationPolicy
 
   class Scope < Scope
     def resolve
-      scope
+      scope.displayable_on_index
     end
   end
 end

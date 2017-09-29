@@ -4,7 +4,7 @@ class ApplicationPolicy
   def initialize(user, record)
     raise Pundit::NotAuthorizedError, "Vous devez vous connecter" unless user
     @user = user
-    @record = record
+    @record = record.is_a?(Array) ? record.last : record
   end
 
   def index?
